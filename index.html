@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aahil Khoja | UI/UX & Web Designer</title>
+
+  <title>Aahil Khoja | UI/UX & Editorial Designer</title>
 
   <style>
     :root {
@@ -39,7 +40,9 @@
       text-decoration: none;
     }
 
-    /* LOADER */
+    /* =========================
+       LOADING SCREEN
+    ========================= */
     .loader {
       position: fixed;
       inset: 0;
@@ -63,7 +66,7 @@
     .loader-ring {
       width: 52px;
       height: 52px;
-      border: 2px solid rgba(255,255,255,0.12);
+      border: 2px solid rgba(255, 255, 255, 0.12);
       border-top-color: var(--accent-cyan);
       border-radius: 50%;
       margin: 0 auto 1rem;
@@ -78,10 +81,14 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
-    /* HEADER */
+    /* =========================
+       HEADER
+    ========================= */
     .site-header {
       position: fixed;
       top: 0;
@@ -148,6 +155,9 @@
       background: var(--accent-cyan);
     }
 
+    /* =========================
+       FULL SCREEN NAV
+    ========================= */
     .nav-overlay {
       position: fixed;
       inset: 0;
@@ -183,7 +193,9 @@
       padding-left: 2rem;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
     .hero {
       min-height: 100vh;
       position: relative;
@@ -218,8 +230,13 @@
     }
 
     @keyframes scroll-left {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     .hero-ring {
@@ -228,13 +245,23 @@
       height: clamp(320px, 42vw, 620px);
       border: 1px solid rgba(37, 204, 204, 0.35);
       border-radius: 50%;
-      box-shadow: 0 0 90px rgba(37, 204, 204, 0.14), inset 0 0 90px rgba(37, 204, 204, 0.12);
+      box-shadow:
+        0 0 90px rgba(37, 204, 204, 0.14),
+        inset 0 0 90px rgba(37, 204, 204, 0.12);
       animation: pulse 4s ease-in-out infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.75; }
-      50% { transform: scale(1.04); opacity: 1; }
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.75;
+      }
+
+      50% {
+        transform: scale(1.04);
+        opacity: 1;
+      }
     }
 
     .hero-content {
@@ -265,7 +292,7 @@
     }
 
     .hero p {
-      max-width: 660px;
+      max-width: 760px;
       margin: 0 auto 2rem;
       color: var(--soft-white);
       font-size: clamp(1.05rem, 2vw, 1.35rem);
@@ -313,7 +340,9 @@
       color: var(--bg-color);
     }
 
-    /* PROJECTS */
+    /* =========================
+       PROJECTS
+    ========================= */
     .projects {
       padding: 8rem 4rem;
     }
@@ -371,12 +400,12 @@
     .project-image {
       aspect-ratio: 16 / 10;
       background:
-        radial-gradient(circle at top right, rgba(37,204,204,0.35), transparent 30%),
+        radial-gradient(circle at top right, rgba(37, 204, 204, 0.35), transparent 30%),
         linear-gradient(135deg, #050505, var(--surface-color));
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255, 255, 255, 0.35);
       font-size: 0.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -415,7 +444,9 @@
       letter-spacing: 1.5px;
     }
 
-    /* ABOUT PREVIEW */
+    /* =========================
+       ABOUT PREVIEW
+    ========================= */
     .about-preview {
       padding: 7rem 4rem;
       background: linear-gradient(180deg, #000, #061918);
@@ -466,7 +497,9 @@
       font-size: 0.85rem;
     }
 
-    /* CONTACT */
+    /* =========================
+       CONTACT PREVIEW
+    ========================= */
     .contact-preview {
       padding: 7rem 4rem;
       text-align: center;
@@ -489,7 +522,9 @@
       line-height: 1.6;
     }
 
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
     .site-footer {
       padding: 3rem 4rem;
       border-top: 1px solid var(--line-color);
@@ -508,6 +543,7 @@
     .footer-icons a {
       color: var(--soft-white);
       transition: 0.3s ease;
+      display: inline-flex;
     }
 
     .footer-icons a:hover {
@@ -526,11 +562,14 @@
     }
 
     .footer-text {
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.45);
       font-size: 0.9rem;
       letter-spacing: 1px;
     }
 
+    /* =========================
+       BACK TO TOP
+    ========================= */
     .back-to-top {
       position: fixed;
       right: 24px;
@@ -556,6 +595,13 @@
       transform: scale(1);
     }
 
+    .back-to-top:hover {
+      background: var(--text-main);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
     @media (max-width: 900px) {
       .site-header,
       .projects,
@@ -566,10 +612,19 @@
         padding-right: 1.5rem;
       }
 
-      .section-header,
+      .site-header {
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
       .about-inner {
         grid-template-columns: 1fr;
-        display: grid;
       }
 
       .project-grid {
@@ -580,11 +635,20 @@
         flex-direction: column;
         text-align: center;
       }
+
+      .nav-overlay {
+        padding: 0 2rem;
+      }
+
+      .nav-links a {
+        font-size: clamp(3rem, 13vw, 5rem);
+      }
     }
   </style>
 </head>
 
 <body>
+
   <div class="loader">
     <div class="loader-inner">
       <div class="loader-ring"></div>
@@ -606,34 +670,37 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="#work">Projects</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
   <main>
+
     <section class="hero" id="home">
       <div class="bg-marquee-container">
         <div class="bg-marquee">
-          <span>UI/UX DESIGNER — WEB DESIGNER — VISUAL SYSTEMS — </span>
-          <span>UI/UX DESIGNER — WEB DESIGNER — VISUAL SYSTEMS — </span>
+          <span>UI/UX DESIGNER — EDITORIAL DESIGNER — WEB DESIGNER — </span>
+          <span>UI/UX DESIGNER — EDITORIAL DESIGNER — WEB DESIGNER — </span>
         </div>
       </div>
 
       <div class="hero-ring"></div>
 
       <div class="hero-content">
-        <span class="eyebrow">UI/UX • Web • Visual Design</span>
-        <h1>Designing clear digital <span>experiences</span></h1>
+        <span class="eyebrow">UI/UX • Editorial • Web Design</span>
+
+        <h1>Hi, I’m <span>Aahil Khoja</span></h1>
+
         <p>
-          I create clean, structured, and visually sharp interfaces for digital products,
-          websites, and brand experiences — combining usability, strong layout systems,
-          and a modern visual identity.
+          I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.
+          I am skilled at taking huge amounts of data and complex user journeys and transforming them
+          into user friendly experiences and clean print designs.
         </p>
 
         <div class="hero-actions">
           <a href="#work" class="btn btn-primary">View Selected Work</a>
-          <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
         </div>
       </div>
     </section>
@@ -648,22 +715,29 @@
       </div>
 
       <div class="project-grid">
+
         <a href="projects/turtle-website.html" class="project-card">
           <div class="project-image">Project Image Coming Soon</div>
           <div class="project-info">
             <div class="project-topline">UI/UX • Web Design</div>
             <h3>Turtle Conservation Website</h3>
-            <p>A responsive educational website built around structure, navigation, research content, and environmental awareness.</p>
+            <p>
+              A responsive educational website built around structure, navigation,
+              research content, and environmental awareness.
+            </p>
             <span class="project-link">View Case Study →</span>
           </div>
         </a>
 
-        <a href="projects/humber-campaign.html" class="project-card">
+        <a href="projects/housing-campaign.html" class="project-card">
           <div class="project-image">Project Image Coming Soon</div>
           <div class="project-info">
             <div class="project-topline">Campaign • Strategy</div>
             <h3>Housing Reality Campaign</h3>
-            <p>A student-focused campaign concept exploring housing expectations, reality, financial pressure, and belonging.</p>
+            <p>
+              A student-focused campaign concept exploring housing expectations,
+              reality, financial pressure, and belonging.
+            </p>
             <span class="project-link">View Case Study →</span>
           </div>
         </a>
@@ -673,7 +747,10 @@
           <div class="project-info">
             <div class="project-topline">UI • Front-End</div>
             <h3>Portfolio Website</h3>
-            <p>A personal digital portfolio designed and coded to communicate UI/UX, visual design, and web development skills.</p>
+            <p>
+              A personal digital portfolio designed and coded to communicate UI/UX,
+              visual design, and web development skills.
+            </p>
             <span class="project-link">View Case Study →</span>
           </div>
         </a>
@@ -683,7 +760,10 @@
           <div class="project-info">
             <div class="project-topline">Branding • Packaging</div>
             <h3>Shizuka Matcha</h3>
-            <p>A Japanese-inspired packaging design system focused on premium visual tone, structure, and product identity.</p>
+            <p>
+              A Japanese-inspired packaging design system focused on premium visual tone,
+              structure, and product identity.
+            </p>
             <span class="project-link">View Case Study →</span>
           </div>
         </a>
@@ -693,7 +773,10 @@
           <div class="project-info">
             <div class="project-topline">Editorial • Typography</div>
             <h3>Sherlock Holmes Book Design</h3>
-            <p>An editorial design project exploring classic literature through typography, hierarchy, imagery, and page composition.</p>
+            <p>
+              An editorial design project exploring classic literature through typography,
+              hierarchy, imagery, and page composition.
+            </p>
             <span class="project-link">View Case Study →</span>
           </div>
         </a>
@@ -703,10 +786,14 @@
           <div class="project-info">
             <div class="project-topline">Typography • Visual System</div>
             <h3>Superman Typeface</h3>
-            <p>A custom typeface project inspired by cinematic superhero lettering, with uppercase, lowercase, numbers, and symbols.</p>
+            <p>
+              A custom typeface project inspired by cinematic superhero lettering,
+              with uppercase, lowercase, numbers, and symbols.
+            </p>
             <span class="project-link">View Case Study →</span>
           </div>
         </a>
+
       </div>
     </section>
 
@@ -719,13 +806,14 @@
 
         <div>
           <p>
-            I’m a multidisciplinary designer focused on UI/UX, web design, branding,
-            and visual systems. My work is driven by clarity, structure, and strong
-            visual storytelling.
+            My work combines digital structure with visual storytelling. I focus on creating
+            interfaces, layouts, and design systems that are clean, usable, and visually sharp.
           </p>
+
           <p>
-            I enjoy creating digital experiences that feel clean, useful, and memorable —
-            balancing user needs with a sharp visual direction.
+            Across UI/UX, web design, branding, and editorial projects, I aim to make complex
+            information easier to understand through strong hierarchy, thoughtful layout,
+            and clear visual direction.
           </p>
 
           <div class="skills">
@@ -744,19 +832,23 @@
 
     <section class="contact-preview" id="contact">
       <h2>Let’s build something <span>clear.</span></h2>
+
       <p>
-        For design opportunities, agency work, UI/UX roles, or web design projects,
-        reach out through email or visit the full contact page.
+        For UI/UX roles, agency work, web design opportunities, or creative collaborations,
+        reach out through email or visit my social platforms.
       </p>
-      <a href="contact.html" class="btn btn-primary">Go To Contact Page</a>
+
+      <a href="mailto:aahilkhoja123@gmail.com" class="btn btn-primary">Email Me</a>
     </section>
+
   </main>
 
   <footer class="site-footer">
     <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
 
     <div class="footer-icons">
-      <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank">
+
+      <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
         <svg class="social-icon" viewBox="0 0 24 24">
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
           <rect x="2" y="9" width="4" height="12"></rect>
@@ -764,7 +856,7 @@
         </svg>
       </a>
 
-      <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank">
+      <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">
         <svg class="social-icon" viewBox="0 0 24 24">
           <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
           <path d="M8 13h5a3 3 0 0 1 0 6H8v-6z"></path>
@@ -773,7 +865,7 @@
         </svg>
       </a>
 
-      <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank">
+      <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
         <svg class="social-icon" viewBox="0 0 24 24">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -787,6 +879,7 @@
           <polyline points="22,6 12,13 2,6"></polyline>
         </svg>
       </a>
+
     </div>
   </footer>
 
@@ -832,9 +925,13 @@
       });
 
       backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
       });
     });
   </script>
+
 </body>
 </html>
