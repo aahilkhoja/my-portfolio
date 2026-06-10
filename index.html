@@ -1,599 +1,840 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aahil Khoja | Multi-Disciplinary Designer</title>
-    
-    <style>
-        /* =========================================
-           VARIABLES & RESET
-        ========================================= */
-        /* Assuming HeronsansCond is loaded locally or via your server. 
-           Using standard fallbacks just in case. */
-        @font-face {
-            font-family: 'HeronsansCond';
-            src: local('HeronsansCond');
-            /* Add your actual font source URLs here when hosting */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aahil Khoja | UI/UX & Web Designer</title>
 
-        :root {
-            /* Sourced from Color Palette Reference */
-            --bg-color: #000000;
-            --surface-color: #0e3332;
-            --text-main: #FFFFFF;
-            --accent-cyan: #25cccc;
-            
-            --font-main: 'HeronsansCond', 'Arial Narrow', sans-serif;
-        }
+  <style>
+    :root {
+      --bg-color: #000000;
+      --text-main: #ffffff;
+      --accent-cyan: #25cccc;
+      --surface-color: #0e3332;
+      --soft-white: rgba(255, 255, 255, 0.72);
+      --line-color: rgba(255, 255, 255, 0.1);
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      --font-main: 'Arial Narrow', Arial, sans-serif;
+    }
 
-        html {
-            scroll-behavior: smooth;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-main);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        /* =========================================
-           HEADER & LOGO
-        ========================================= */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-        }
+    body {
+      background: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+    }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            z-index: 101;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        /* Using your name as the text-based logo */
-        .logo-text {
-            color: var(--text-main);
-            font-weight: 700; /* Bold */
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+    /* LOADER */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
 
-        /* Doner Menu Toggle */
-        .menu-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            z-index: 101;
-            padding: 10px;
-        }
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-        .line {
-            display: block;
-            height: 2px;
-            background-color: var(--text-main);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+    .loader-inner {
+      text-align: center;
+    }
 
-        .line-1 { width: 32px; }
-        .line-2 { width: 20px; align-self: flex-end; }
-        .line-3 { width: 32px; }
+    .loader-ring {
+      width: 52px;
+      height: 52px;
+      border: 2px solid rgba(255,255,255,0.12);
+      border-top-color: var(--accent-cyan);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
 
-        .menu-toggle.active .line-1 { transform: translateY(8px) rotate(45deg); width: 32px; background-color: var(--accent-cyan); }
-        .menu-toggle.active .line-2 { opacity: 0; }
-        .menu-toggle.active .line-3 { transform: translateY(-8px) rotate(-45deg); width: 32px; background-color: var(--accent-cyan); }
+    .loader-text {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--soft-white);
+    }
 
-        /* Full-Screen Overlay */
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: var(--bg-color);
-            display: flex;
-            align-items: center;
-            padding: 0 4rem;
-            clip-path: circle(0% at calc(100% - 6rem) 3rem);
-            transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
-            z-index: 99;
-        }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
 
-        .nav-overlay.active {
-            clip-path: circle(150% at calc(100% - 6rem) 3rem);
-        }
+    /* HEADER */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.7rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
 
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: clamp(4rem, 8vw, 7rem);
-            font-weight: 600; /* Semibold */
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            transition: color 0.3s ease, padding-left 0.3s ease;
-        }
+    .logo-text span {
+      color: var(--accent-cyan);
+    }
 
-        .nav-links a:hover {
-            color: var(--accent-cyan);
-            padding-left: 2rem;
-        }
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
 
-        /* =========================================
-           HERO SECTION & ANIMATION
-        ========================================= */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            padding: 0 2rem;
-        }
+    .line {
+      display: block;
+      height: 2px;
+      background: var(--text-main);
+      transition: 0.4s ease;
+    }
 
-        /* CSS Marquee "GIF" Replacement */
-        .bg-marquee-container {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            transform: translateY(-50%);
-            overflow: hidden;
-            z-index: 0;
-            opacity: 0.05;
-            pointer-events: none;
-        }
+    .line-1,
+    .line-3 {
+      width: 32px;
+    }
 
-        .bg-marquee {
-            display: flex;
-            white-space: nowrap;
-            animation: scroll-left 20s linear infinite;
-        }
+    .line-2 {
+      width: 20px;
+      align-self: flex-end;
+    }
 
-        .bg-marquee span {
-            font-size: 15vw;
-            font-weight: 700; /* Bold */
-            color: var(--text-main);
-            padding-right: 5vw;
-        }
+    .menu-toggle.active .line-1 {
+      transform: translateY(8px) rotate(45deg);
+      background: var(--accent-cyan);
+    }
 
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+    .menu-toggle.active .line-2 {
+      opacity: 0;
+    }
 
-        /* 2. Loading Circle Animation on Hero Ring */
-        @keyframes rotate-ring {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+    .menu-toggle.active .line-3 {
+      transform: translateY(-8px) rotate(-45deg);
+      background: var(--accent-cyan);
+    }
 
-        .hero-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            /* transform is applied here and kept in the animation to center it while rotating */
-            transform: translate(-50%, -50%);
-            width: clamp(300px, 40vw, 600px);
-            height: clamp(300px, 40vw, 600px);
-            border: 2px solid rgba(37, 204, 204, 0.3);
-            border-radius: 50%;
-            box-shadow: 0 0 80px rgba(37, 204, 204, 0.15), inset 0 0 80px rgba(37, 204, 204, 0.15);
-            z-index: 1;
-            pointer-events: none;
-            /* 2. continuous loading animation */
-            animation: rotate-ring 6s linear infinite;
-        }
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-color);
+      display: flex;
+      align-items: center;
+      padding: 0 4rem;
+      clip-path: circle(0% at calc(100% - 6rem) 3rem);
+      transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 999;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
+    .nav-overlay.active {
+      clip-path: circle(150% at calc(100% - 6rem) 3rem);
+    }
 
-        .hero h1 {
-            font-size: clamp(3rem, 6vw, 6rem);
-            font-weight: 600; /* Semibold */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
 
-        /* 3. Heading Text Change */
-        .hero h1 span {
-            color: var(--accent-cyan);
-        }
+    .nav-links a {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
 
-        .hero p {
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            font-weight: 300; /* Light */
-            color: var(--text-main);
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.8;
-            letter-spacing: 1px;
-        }
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+      padding-left: 2rem;
+    }
 
-        /* =========================================
-           FEATURED PROJECTS (4 Grid Layout)
-        ========================================= */
-        .projects {
-            padding: 8rem 4rem;
-            background-color: var(--bg-color);
-        }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
 
-        .section-header {
-            margin-bottom: 4rem;
-            text-align: center;
-        }
+    .bg-marquee-container {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      transform: translateY(-50%);
+      opacity: 0.05;
+      pointer-events: none;
+    }
 
-        .section-header h2 {
-            font-size: 3rem;
-            font-weight: 600; /* Semibold */
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+    .bg-marquee {
+      display: flex;
+      white-space: nowrap;
+      animation: scroll-left 22s linear infinite;
+    }
 
-        .section-header h2 span {
-            color: var(--accent-cyan);
-        }
+    .bg-marquee span {
+      font-size: 14vw;
+      font-weight: 800;
+      padding-right: 5vw;
+    }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
 
-        .project-card {
-            display: block;
-            text-decoration: none;
-            background-color: var(--surface-color);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s ease, border-color 0.4s ease;
-        }
+    .hero-ring {
+      position: absolute;
+      width: clamp(320px, 42vw, 620px);
+      height: clamp(320px, 42vw, 620px);
+      border: 1px solid rgba(37, 204, 204, 0.35);
+      border-radius: 50%;
+      box-shadow: 0 0 90px rgba(37, 204, 204, 0.14), inset 0 0 90px rgba(37, 204, 204, 0.12);
+      animation: pulse 4s ease-in-out infinite;
+    }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-cyan);
-        }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.75; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
 
-        .project-image-container {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background-color: #111;
-            position: relative;
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
 
-        /* Placeholders for your 4 projects */
-        .img-1 { background: linear-gradient(45deg, #050505, var(--surface-color)); }
-        .img-2 { background: linear-gradient(45deg, var(--surface-color), #050505); }
-        .img-3 { background: linear-gradient(135deg, #050505, var(--surface-color)); }
-        .img-4 { background: linear-gradient(135deg, var(--surface-color), #050505); }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1.4rem;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+    }
 
-        .project-meta {
-            padding: 2rem;
-            background-color: var(--bg-color);
-            border-top: 1px solid rgba(37, 204, 204, 0.2);
-        }
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
+    }
 
-        .project-meta h3 {
-            color: var(--text-main);
-            font-size: 1.8rem;
-            font-weight: 600; /* Semibold */
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
+    .hero h1 span {
+      color: var(--accent-cyan);
+    }
 
-        .project-card:hover .project-meta h3 {
-            color: var(--accent-cyan);
-        }
+    .hero p {
+      max-width: 660px;
+      margin: 0 auto 2rem;
+      color: var(--soft-white);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.6;
+    }
 
-        .project-meta p {
-            color: var(--text-main);
-            font-weight: 300; /* Light */
-            font-size: 1rem;
-            opacity: 0.7;
-        }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-        /* =========================================
-           FOOTER & ICONOGRAPHY
-        ========================================= */
-        .site-footer {
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            border-top: 1px solid var(--surface-color);
-            background-color: var(--bg-color);
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      padding: 0.95rem 1.4rem;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
 
-        .footer-icons {
-            display: flex;
-            gap: 2rem;
-        }
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: var(--bg-color);
+      font-weight: 700;
+    }
 
-        .footer-icons a {
-            color: var(--text-main);
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-flex;
-        }
+    .btn-primary:hover {
+      background: var(--text-main);
+      border-color: var(--text-main);
+    }
 
-        .footer-icons a:hover {
-            color: var(--accent-cyan);
-            transform: translateY(-3px);
-        }
+    .btn-secondary {
+      color: var(--text-main);
+    }
 
-        /* SVG Icon uniform styling with 1.5px stroke weight based on image_4.png */
-        .social-icon {
-            width: 32px;
-            height: 32px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
+    .btn-secondary:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-color);
+    }
 
-        .footer-text {
-            font-weight: 400; /* Regular */
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: var(--text-main);
-            opacity: 0.5;
-        }
+    /* PROJECTS */
+    .projects {
+      padding: 8rem 4rem;
+    }
 
-        /* =========================================
-           1. BACK TO TOP BUTTON
-        ========================================= */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: var(--accent-cyan);
-            color: var(--bg-color);
-            font-size: 2rem;
-            font-family: var(--font-main);
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease;
-            opacity: 0;
-            transform: scale(0);
-            visibility: hidden;
-            box-shadow: 0 4px 20px rgba(37, 204, 204, 0.3);
-        }
+    .section-header {
+      max-width: 1200px;
+      margin: 0 auto 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: end;
+      border-bottom: 1px solid var(--line-color);
+      padding-bottom: 2rem;
+    }
 
-        .back-to-top.show {
-            opacity: 1;
-            transform: scale(1);
-            visibility: visible;
-        }
+    .section-header h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      text-transform: uppercase;
+      line-height: 1;
+    }
 
-        .back-to-top:hover {
-            background-color: var(--text-main);
-        }
+    .section-header h2 span {
+      color: var(--accent-cyan);
+    }
 
-        /* =========================================
-           RESPONSIVE DESIGN
-        ========================================= */
-        @media (max-width: 900px) {
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-            .site-header, .nav-overlay, .projects {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
-            .back-to-top {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+    .section-header p {
+      max-width: 420px;
+      color: var(--soft-white);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    .project-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface-color);
+      border: 1px solid var(--line-color);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 35px rgba(37, 204, 204, 0.12);
+    }
+
+    .project-image {
+      aspect-ratio: 16 / 10;
+      background:
+        radial-gradient(circle at top right, rgba(37,204,204,0.35), transparent 30%),
+        linear-gradient(135deg, #050505, var(--surface-color));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .project-info {
+      padding: 1.6rem;
+      background: #000;
+      border-top: 1px solid rgba(37, 204, 204, 0.22);
+    }
+
+    .project-topline {
+      color: var(--accent-cyan);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-info h3 {
+      font-size: 1.7rem;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-info p {
+      color: var(--soft-white);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .project-link {
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ABOUT PREVIEW */
+    .about-preview {
+      padding: 7rem 4rem;
+      background: linear-gradient(180deg, #000, #061918);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-label {
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+    }
+
+    .about-inner h2 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .about-inner p {
+      color: var(--soft-white);
+      line-height: 1.8;
+      font-size: 1.08rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 1.5rem;
+    }
+
+    .skills span {
+      border: 1px solid rgba(37, 204, 204, 0.35);
+      border-radius: 999px;
+      padding: 0.55rem 0.85rem;
+      color: var(--text-main);
+      font-size: 0.85rem;
+    }
+
+    /* CONTACT */
+    .contact-preview {
+      padding: 7rem 4rem;
+      text-align: center;
+    }
+
+    .contact-preview h2 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .contact-preview h2 span {
+      color: var(--accent-cyan);
+    }
+
+    .contact-preview p {
+      color: var(--soft-white);
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--line-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-icons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-icons a {
+      color: var(--soft-white);
+      transition: 0.3s ease;
+    }
+
+    .footer-icons a:hover {
+      color: var(--accent-cyan);
+      transform: translateY(-3px);
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-text {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent-cyan);
+      color: #000;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    @media (max-width: 900px) {
+      .site-header,
+      .projects,
+      .about-preview,
+      .contact-preview,
+      .site-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .section-header,
+      .about-inner {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="loader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Loading Interface</div>
+    </div>
+  </div>
 
-    <header class="site-header">
-        <a href="#" class="logo-container">
-            <span class="logo-text">AAHIL KHOJA</span>
-        </a>
-        
-        <button class="menu-toggle" aria-label="Toggle Menu">
-            <span class="line line-1"></span>
-            <span class="line line-2"></span>
-            <span class="line line-3"></span>
-        </button>
-    </header>
+  <header class="site-header">
+    <a href="index.html" class="logo-text">AAHIL<span>.</span></a>
 
-    <nav class="nav-overlay">
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#work">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+    </button>
+  </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="bg-marquee-container">
-                <div class="bg-marquee">
-                    <span>UI/UX DESIGNER — EDITORIAL DESIGNER — UI/UX DESIGNER — EDITORIAL DESIGNER — </span>
-                    <span>UI/UX DESIGNER — EDITORIAL DESIGNER — UI/UX DESIGNER — EDITORIAL DESIGNER — </span>
-                </div>
-            </div>
+  <nav class="nav-overlay">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-            <div class="hero-ring"></div>
-            
-            <div class="hero-content">
-                <h1>UI/UX <span>&</span> Editorial Designer</h1>
-                <p>I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.</p>
-            </div>
-        </section>
-
-        <section id="work" class="projects">
-            <div class="section-header">
-                <h2>Selected <span>Works</span></h2>
-            </div>
-            
-            <div class="project-grid">
-                <a href="#" class="project-card">
-                    <div class="project-image-container img-1"></div>
-                    <div class="project-meta">
-                        <h3>Ocean Pacific: Timeless</h3>
-                        <p>UI/UX & Integrated Marketing</p>
-                    </div>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-image-container img-2"></div>
-                    <div class="project-meta">
-                        <h3>Outlands Zine</h3>
-                        <p>Editorial Design & Typography</p>
-                    </div>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-image-container img-3"></div>
-                    <div class="project-meta">
-                        <h3>Spotify Pitch Deck</h3>
-                        <p>Presentation & Visual Strategy</p>
-                    </div>
-                </a>
-
-                <a href="#" class="project-card">
-                    <div class="project-image-container img-4"></div>
-                    <div class="project-meta">
-                        <h3>Humber College Redesign</h3>
-                        <p>Web Platform & UI Architecture</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="footer-icons">
-            <a href="#" aria-label="LinkedIn">
-                <svg class="social-icon" viewBox="0 0 24 24">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-            </a>
-            <a href="#" aria-label="Behance">
-                <svg class="social-icon" viewBox="0 0 24 24">
-                    <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
-                    <path d="M8 13h5a3 3 0 0 1 0 6H8v-6z"></path>
-                    <line x1="15" y1="9" x2="20" y2="9"></line>
-                    <path d="M15 14h5v1a4 4 0 0 1-8 0v-1h3z"></path>
-                </svg>
-            </a>
-            <a href="#" aria-label="Instagram">
-                <svg class="social-icon" viewBox="0 0 24 24">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-            </a>
-            <a href="mailto:hello@example.com" aria-label="Email">
-                <svg class="social-icon" viewBox="0 0 24 24">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-            </a>
+  <main>
+    <section class="hero" id="home">
+      <div class="bg-marquee-container">
+        <div class="bg-marquee">
+          <span>UI/UX DESIGNER — WEB DESIGNER — VISUAL SYSTEMS — </span>
+          <span>UI/UX DESIGNER — WEB DESIGNER — VISUAL SYSTEMS — </span>
         </div>
-        <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
-    </footer>
+      </div>
 
-    <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+      <div class="hero-ring"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navOverlay = document.querySelector('.nav-overlay');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            const backToTopBtn = document.getElementById('backToTop');
+      <div class="hero-content">
+        <span class="eyebrow">UI/UX • Web • Visual Design</span>
+        <h1>Designing clear digital <span>experiences</span></h1>
+        <p>
+          I create clean, structured, and visually sharp interfaces for digital products,
+          websites, and brand experiences — combining usability, strong layout systems,
+          and a modern visual identity.
+        </p>
 
-            // --- Menu Toggle Logic ---
-            const toggleMenu = () => {
-                menuToggle.classList.toggle('active');
-                navOverlay.classList.toggle('active');
-                
-                const isExpanded = menuToggle.classList.contains('active');
-                menuToggle.setAttribute('aria-expanded', isExpanded);
-                document.body.style.overflow = isExpanded ? 'hidden' : '';
-            };
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary">View Selected Work</a>
+          <a href="contact.html" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+    </section>
 
-            menuToggle.addEventListener('click', toggleMenu);
+    <section class="projects" id="work">
+      <div class="section-header">
+        <h2>Selected <span>Works</span></h2>
+        <p>
+          Six focused projects showing UI/UX thinking, web design, campaign systems,
+          branding, editorial layout, and visual experimentation.
+        </p>
+      </div>
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (menuToggle.classList.contains('active')) {
-                        toggleMenu();
-                    }
-                });
-            });
+      <div class="project-grid">
+        <a href="projects/turtle-website.html" class="project-card">
+          <div class="project-image">Project Image Coming Soon</div>
+          <div class="project-info">
+            <div class="project-topline">UI/UX • Web Design</div>
+            <h3>Turtle Conservation Website</h3>
+            <p>A responsive educational website built around structure, navigation, research content, and environmental awareness.</p>
+            <span class="project-link">View Case Study →</span>
+          </div>
+        </a>
 
-            // --- 1. Back to Top Button Logic ---
-            // Detect scroll to show/hide button
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 500) { // Show button after scrolling down 500px
-                    backToTopBtn.classList.add('show');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                }
-            });
+        <a href="projects/humber-campaign.html" class="project-card">
+          <div class="project-image">Project Image Coming Soon</div>
+          <div class="project-info">
+            <div class="project-topline">Campaign • Strategy</div>
+            <h3>Housing Reality Campaign</h3>
+            <p>A student-focused campaign concept exploring housing expectations, reality, financial pressure, and belonging.</p>
+            <span class="project-link">View Case Study →</span>
+          </div>
+        </a>
 
-            // Smooth scroll to top on click
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+        <a href="projects/portfolio-website.html" class="project-card">
+          <div class="project-image">Project Image Coming Soon</div>
+          <div class="project-info">
+            <div class="project-topline">UI • Front-End</div>
+            <h3>Portfolio Website</h3>
+            <p>A personal digital portfolio designed and coded to communicate UI/UX, visual design, and web development skills.</p>
+            <span class="project-link">View Case Study →</span>
+          </div>
+        </a>
+
+        <a href="projects/shizuka-matcha.html" class="project-card">
+          <div class="project-image">Project Image Coming Soon</div>
+          <div class="project-info">
+            <div class="project-topline">Branding • Packaging</div>
+            <h3>Shizuka Matcha</h3>
+            <p>A Japanese-inspired packaging design system focused on premium visual tone, structure, and product identity.</p>
+            <span class="project-link">View Case Study →</span>
+          </div>
+        </a>
+
+        <a href="projects/sherlock-holmes.html" class="project-card">
+          <div class="project-image">Project Image Coming Soon</div>
+          <div class="project-info">
+            <div class="project-topline">Editorial • Typography</div>
+            <h3>Sherlock Holmes Book Design</h3>
+            <p>An editorial design project exploring classic literature through typography, hierarchy, imagery, and page composition.</p>
+            <span class="project-link">View Case Study →</span>
+          </div>
+        </a>
+
+        <a href="projects/superman-typeface.html" class="project-card">
+          <div class="project-image">Project Image Coming Soon</div>
+          <div class="project-info">
+            <div class="project-topline">Typography • Visual System</div>
+            <h3>Superman Typeface</h3>
+            <p>A custom typeface project inspired by cinematic superhero lettering, with uppercase, lowercase, numbers, and symbols.</p>
+            <span class="project-link">View Case Study →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="about-preview" id="about">
+      <div class="about-inner">
+        <div>
+          <div class="about-label">About</div>
+          <h2>Personal vision, professional execution.</h2>
+        </div>
+
+        <div>
+          <p>
+            I’m a multidisciplinary designer focused on UI/UX, web design, branding,
+            and visual systems. My work is driven by clarity, structure, and strong
+            visual storytelling.
+          </p>
+          <p>
+            I enjoy creating digital experiences that feel clean, useful, and memorable —
+            balancing user needs with a sharp visual direction.
+          </p>
+
+          <div class="skills">
+            <span>UI/UX Design</span>
+            <span>Web Design</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Branding</span>
+            <span>Editorial Design</span>
+            <span>Visual Systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-preview" id="contact">
+      <h2>Let’s build something <span>clear.</span></h2>
+      <p>
+        For design opportunities, agency work, UI/UX roles, or web design projects,
+        reach out through email or visit the full contact page.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Go To Contact Page</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
+
+    <div class="footer-icons">
+      <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+
+      <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
+          <path d="M8 13h5a3 3 0 0 1 0 6H8v-6z"></path>
+          <line x1="15" y1="9" x2="20" y2="9"></line>
+          <path d="M15 14h5v1a4 4 0 0 1-8 0v-1h3z"></path>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+
+      <a href="mailto:aahilkhoja123@gmail.com" aria-label="Email">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loader = document.querySelector('.loader');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navOverlay = document.querySelector('.nav-overlay');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const backToTopBtn = document.getElementById('backToTop');
+
+      setTimeout(() => {
+        loader.classList.add('hide');
+      }, 750);
+
+      const toggleMenu = () => {
+        menuToggle.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+
+        const isExpanded = menuToggle.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+        document.body.style.overflow = isExpanded ? 'hidden' : '';
+      };
+
+      menuToggle.addEventListener('click', toggleMenu);
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (menuToggle.classList.contains('active')) {
+            toggleMenu();
+          }
         });
-    </script>
+      });
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
