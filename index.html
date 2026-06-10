@@ -7,6 +7,15 @@
   <title>Aahil Khoja | UI/UX & Editorial Designer</title>
 
   <style>
+    /* =========================
+       VARIABLES + RESET
+    ========================= */
+    @font-face {
+      font-family: 'HeronsansCond';
+      src: local('HeronsansCond');
+      font-display: swap;
+    }
+
     :root {
       --bg-color: #000000;
       --text-main: #ffffff;
@@ -15,7 +24,7 @@
       --soft-white: rgba(255, 255, 255, 0.72);
       --line-color: rgba(255, 255, 255, 0.1);
 
-      --font-main: 'Arial Narrow', Arial, sans-serif;
+      --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
     }
 
     * {
@@ -70,7 +79,7 @@
       border-top-color: var(--accent-cyan);
       border-radius: 50%;
       margin: 0 auto 1rem;
-      animation: spin 0.8s linear infinite;
+      animation: loader-spin 0.8s linear infinite;
     }
 
     .loader-text {
@@ -80,7 +89,7 @@
       color: var(--soft-white);
     }
 
-    @keyframes spin {
+    @keyframes loader-spin {
       to {
         transform: rotate(360deg);
       }
@@ -213,8 +222,9 @@
       left: 0;
       width: 100%;
       transform: translateY(-50%);
-      opacity: 0.05;
+      opacity: 0.045;
       pointer-events: none;
+      z-index: 0;
     }
 
     .bg-marquee {
@@ -241,26 +251,29 @@
 
     .hero-ring {
       position: absolute;
+      top: 50%;
+      left: 50%;
       width: clamp(320px, 42vw, 620px);
       height: clamp(320px, 42vw, 620px);
-      border: 1px solid rgba(37, 204, 204, 0.35);
       border-radius: 50%;
+      border: 2px solid rgba(37, 204, 204, 0.13);
+      border-top: 2px solid var(--accent-cyan);
+      border-right: 2px solid rgba(37, 204, 204, 0.35);
       box-shadow:
         0 0 90px rgba(37, 204, 204, 0.14),
-        inset 0 0 90px rgba(37, 204, 204, 0.12);
-      animation: pulse 4s ease-in-out infinite;
+        inset 0 0 90px rgba(37, 204, 204, 0.08);
+      animation: rotate-ring 5s linear infinite;
+      z-index: 1;
+      pointer-events: none;
     }
 
-    @keyframes pulse {
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 0.75;
+    @keyframes rotate-ring {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
       }
 
-      50% {
-        transform: scale(1.04);
-        opacity: 1;
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
       }
     }
 
@@ -280,7 +293,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      font-size: clamp(3.4rem, 8vw, 7.4rem);
       line-height: 0.95;
       text-transform: uppercase;
       letter-spacing: -1px;
@@ -292,7 +305,7 @@
     }
 
     .hero p {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto 2rem;
       color: var(--soft-white);
       font-size: clamp(1.05rem, 2vw, 1.35rem);
@@ -643,6 +656,15 @@
       .nav-links a {
         font-size: clamp(3rem, 13vw, 5rem);
       }
+
+      .hero h1 {
+        font-size: clamp(3.1rem, 15vw, 5.2rem);
+      }
+
+      .hero-ring {
+        width: 330px;
+        height: 330px;
+      }
     }
   </style>
 </head>
@@ -695,7 +717,7 @@
         <p>
           I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.
           I am skilled at taking huge amounts of data and complex user journeys and transforming them
-          into user friendly experiences and clean print designs.
+          into user-friendly experiences and clean print designs.
         </p>
 
         <div class="hero-actions">
