@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aahil Khoja | UI/UX & Editorial Designer</title>
+    <title>Aahil Khoja | Multi-Disciplinary Designer</title>
     
     <style>
         /* =========================================
@@ -67,14 +67,7 @@
             z-index: 101;
         }
 
-        /* Placeholder for your actual Logo image */
-        .brand-logo {
-            height: 40px;
-            width: auto;
-            /* Filter allows you to force a white logo if you upload a black PNG, 
-               but ideally, use your white SVG/PNG directly */
-        }
-
+        /* Using your name as the text-based logo */
         .logo-text {
             color: var(--text-main);
             font-weight: 700; /* Bold */
@@ -198,11 +191,17 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* Central Glowing Ring (from reference image) */
+        /* 2. Loading Circle Animation on Hero Ring */
+        @keyframes rotate-ring {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
         .hero-ring {
             position: absolute;
             top: 50%;
             left: 50%;
+            /* transform is applied here and kept in the animation to center it while rotating */
             transform: translate(-50%, -50%);
             width: clamp(300px, 40vw, 600px);
             height: clamp(300px, 40vw, 600px);
@@ -211,6 +210,8 @@
             box-shadow: 0 0 80px rgba(37, 204, 204, 0.15), inset 0 0 80px rgba(37, 204, 204, 0.15);
             z-index: 1;
             pointer-events: none;
+            /* 2. continuous loading animation */
+            animation: rotate-ring 6s linear infinite;
         }
 
         .hero-content {
@@ -226,6 +227,7 @@
             margin-bottom: 1rem;
         }
 
+        /* 3. Heading Text Change */
         .hero h1 span {
             color: var(--accent-cyan);
         }
@@ -241,7 +243,7 @@
         }
 
         /* =========================================
-           FEATURED PROJECTS (4 Items)
+           FEATURED PROJECTS (4 Grid Layout)
         ========================================= */
         .projects {
             padding: 8rem 4rem;
@@ -355,7 +357,7 @@
             transform: translateY(-3px);
         }
 
-        /* SVG Icon uniform styling to match reference exactly */
+        /* SVG Icon uniform styling with 1.5px stroke weight based on image_4.png */
         .social-icon {
             width: 32px;
             height: 32px;
@@ -375,6 +377,44 @@
         }
 
         /* =========================================
+           1. BACK TO TOP BUTTON
+        ========================================= */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent-cyan);
+            color: var(--bg-color);
+            font-size: 2rem;
+            font-family: var(--font-main);
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.4s ease, transform 0.4s ease, background-color 0.3s ease;
+            opacity: 0;
+            transform: scale(0);
+            visibility: hidden;
+            box-shadow: 0 4px 20px rgba(37, 204, 204, 0.3);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            transform: scale(1);
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--text-main);
+        }
+
+        /* =========================================
            RESPONSIVE DESIGN
         ========================================= */
         @media (max-width: 900px) {
@@ -385,16 +425,20 @@
                 padding-left: 2rem;
                 padding-right: 2rem;
             }
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-<h1>HELLO TEST</h1>
-    <!-- Header & Logo -->
+
     <header class="site-header">
         <a href="#" class="logo-container">
-            <!-- Replace src with your exact white logo URL -->
-            <!-- <img src="logo-white.png" alt="Logo" class="brand-logo"> -->
             <span class="logo-text">AAHIL KHOJA</span>
         </a>
         
@@ -405,7 +449,6 @@
         </button>
     </header>
 
-    <!-- Seamless Dropdown Overlay -->
     <nav class="nav-overlay">
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -415,11 +458,8 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section id="home" class="hero">
-            <!-- Modern Text Scrolling Animation (GIF alternative) -->
             <div class="bg-marquee-container">
                 <div class="bg-marquee">
                     <span>UI/UX DESIGNER — EDITORIAL DESIGNER — UI/UX DESIGNER — EDITORIAL DESIGNER — </span>
@@ -427,23 +467,20 @@
                 </div>
             </div>
 
-            <!-- Glowing Ring Reference Element -->
             <div class="hero-ring"></div>
             
             <div class="hero-content">
-                <h1>UI/UX <span>&</span> Editorial</h1>
-                <p>Translating complex problems into vibrant, functionalist digital experiences.</p>
+                <h1>UI/UX <span>&</span> Editorial Designer</h1>
+                <p>I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.</p>
             </div>
         </section>
 
-        <!-- Featured Projects (4 Grid Layout) -->
         <section id="work" class="projects">
             <div class="section-header">
                 <h2>Selected <span>Works</span></h2>
             </div>
             
             <div class="project-grid">
-                <!-- Project 1 -->
                 <a href="#" class="project-card">
                     <div class="project-image-container img-1"></div>
                     <div class="project-meta">
@@ -452,7 +489,6 @@
                     </div>
                 </a>
 
-                <!-- Project 2 -->
                 <a href="#" class="project-card">
                     <div class="project-image-container img-2"></div>
                     <div class="project-meta">
@@ -461,7 +497,6 @@
                     </div>
                 </a>
 
-                <!-- Project 3 -->
                 <a href="#" class="project-card">
                     <div class="project-image-container img-3"></div>
                     <div class="project-meta">
@@ -470,7 +505,6 @@
                     </div>
                 </a>
 
-                <!-- Project 4 -->
                 <a href="#" class="project-card">
                     <div class="project-image-container img-4"></div>
                     <div class="project-meta">
@@ -482,10 +516,8 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-icons">
-            <!-- LinkedIn -->
             <a href="#" aria-label="LinkedIn">
                 <svg class="social-icon" viewBox="0 0 24 24">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
@@ -493,7 +525,6 @@
                     <circle cx="4" cy="4" r="2"></circle>
                 </svg>
             </a>
-            <!-- Behance -->
             <a href="#" aria-label="Behance">
                 <svg class="social-icon" viewBox="0 0 24 24">
                     <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
@@ -502,7 +533,6 @@
                     <path d="M15 14h5v1a4 4 0 0 1-8 0v-1h3z"></path>
                 </svg>
             </a>
-            <!-- Instagram -->
             <a href="#" aria-label="Instagram">
                 <svg class="social-icon" viewBox="0 0 24 24">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -510,7 +540,6 @@
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
             </a>
-            <!-- Email -->
             <a href="mailto:hello@example.com" aria-label="Email">
                 <svg class="social-icon" viewBox="0 0 24 24">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -521,13 +550,16 @@
         <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
     </footer>
 
-    <!-- JavaScript -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuToggle = document.querySelector('.menu-toggle');
             const navOverlay = document.querySelector('.nav-overlay');
             const navLinks = document.querySelectorAll('.nav-links a');
+            const backToTopBtn = document.getElementById('backToTop');
 
+            // --- Menu Toggle Logic ---
             const toggleMenu = () => {
                 menuToggle.classList.toggle('active');
                 navOverlay.classList.toggle('active');
@@ -545,6 +577,21 @@
                         toggleMenu();
                     }
                 });
+            });
+
+            // --- 1. Back to Top Button Logic ---
+            // Detect scroll to show/hide button
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) { // Show button after scrolling down 500px
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            // Smooth scroll to top on click
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     </script>
