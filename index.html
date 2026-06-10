@@ -7,9 +7,6 @@
   <title>Aahil Khoja | UI/UX & Editorial Designer</title>
 
   <style>
-    /* =========================
-       VARIABLES + RESET
-    ========================= */
     @font-face {
       font-family: 'HeronsansCond';
       src: local('HeronsansCond');
@@ -222,7 +219,7 @@
       left: 0;
       width: 100%;
       transform: translateY(-50%);
-      opacity: 0.045;
+      opacity: 0.035;
       pointer-events: none;
       z-index: 0;
     }
@@ -249,38 +246,105 @@
       }
     }
 
+    /* GLOWING ROTATING ORB EFFECT */
     .hero-ring {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: clamp(320px, 42vw, 620px);
-      height: clamp(320px, 42vw, 620px);
+      width: clamp(340px, 46vw, 680px);
+      height: clamp(340px, 46vw, 680px);
       border-radius: 50%;
-      border: 2px solid rgba(37, 204, 204, 0.13);
-      border-top: 2px solid var(--accent-cyan);
-      border-right: 2px solid rgba(37, 204, 204, 0.35);
-      box-shadow:
-        0 0 90px rgba(37, 204, 204, 0.14),
-        inset 0 0 90px rgba(37, 204, 204, 0.08);
-      animation: rotate-ring 5s linear infinite;
+      transform: translate(-50%, -50%);
       z-index: 1;
       pointer-events: none;
+      filter: drop-shadow(0 0 45px rgba(37, 204, 204, 0.16));
     }
 
-    @keyframes rotate-ring {
+    .hero-ring::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          from 210deg,
+          transparent 0deg,
+          rgba(37, 204, 204, 0.04) 35deg,
+          rgba(37, 204, 204, 0.25) 70deg,
+          rgba(37, 204, 204, 0.9) 105deg,
+          rgba(37, 204, 204, 0.45) 135deg,
+          transparent 175deg,
+          transparent 360deg
+        );
+      -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 86px),
+        #000 calc(100% - 84px)
+      );
+      mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 86px),
+        #000 calc(100% - 84px)
+      );
+      filter: blur(18px);
+      animation: orb-spin 6s linear infinite;
+    }
+
+    .hero-ring::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          from 40deg,
+          rgba(255, 255, 255, 0.04),
+          transparent 60deg,
+          rgba(37, 204, 204, 0.18) 120deg,
+          rgba(37, 204, 204, 0.03) 180deg,
+          transparent 260deg,
+          rgba(255, 255, 255, 0.05) 360deg
+        );
+      -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 42px),
+        #000 calc(100% - 40px)
+      );
+      mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 42px),
+        #000 calc(100% - 40px)
+      );
+      filter: blur(10px);
+      opacity: 0.8;
+      animation: orb-spin-reverse 11s linear infinite;
+    }
+
+    @keyframes orb-spin {
       from {
-        transform: translate(-50%, -50%) rotate(0deg);
+        transform: rotate(0deg);
       }
 
       to {
-        transform: translate(-50%, -50%) rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes orb-spin-reverse {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
       }
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 900px;
+      max-width: 1000px;
+      width: 100%;
     }
 
     .eyebrow {
@@ -293,15 +357,24 @@
     }
 
     .hero h1 {
-      font-size: clamp(3.4rem, 8vw, 7.4rem);
+      font-size: clamp(3.2rem, 7.4vw, 7rem);
       line-height: 0.95;
       text-transform: uppercase;
       letter-spacing: -1px;
       margin-bottom: 1.5rem;
+      text-align: center;
     }
 
-    .hero h1 span {
+    .hero h1 .intro-line {
+      display: block;
+      color: var(--text-main);
+    }
+
+    .hero h1 .name-line {
+      display: block;
       color: var(--accent-cyan);
+      margin-top: 0.1em;
+      white-space: nowrap;
     }
 
     .hero p {
@@ -658,12 +731,46 @@
       }
 
       .hero h1 {
-        font-size: clamp(3.1rem, 15vw, 5.2rem);
+        font-size: clamp(3rem, 14vw, 5.2rem);
+      }
+
+      .hero h1 .name-line {
+        white-space: normal;
       }
 
       .hero-ring {
-        width: 330px;
-        height: 330px;
+        width: 360px;
+        height: 360px;
+      }
+
+      .hero-ring::before {
+        -webkit-mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 58px),
+          #000 calc(100% - 56px)
+        );
+        mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 58px),
+          #000 calc(100% - 56px)
+        );
+      }
+
+      .hero-ring::after {
+        inset: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .bg-marquee,
+      .hero-ring::before,
+      .hero-ring::after,
+      .loader-ring {
+        animation: none;
       }
     }
   </style>
@@ -712,7 +819,10 @@
       <div class="hero-content">
         <span class="eyebrow">UI/UX • Editorial • Web Design</span>
 
-        <h1>Hi, I’m <span>Aahil Khoja</span></h1>
+        <h1>
+          <span class="intro-line">Hi, I’m</span>
+          <span class="name-line">Aahil Khoja</span>
+        </h1>
 
         <p>
           I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.
