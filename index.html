@@ -480,68 +480,68 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 4rem 2rem;
     }
 
     .project-card {
-      background: var(--surface-color);
-      border: 1px solid rgba(37, 204, 204, 0.25);
-      border-radius: 14px;
-      overflow: hidden;
+      display: block;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
       transition: 0.35s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--accent-cyan);
-      box-shadow: 0 0 35px rgba(37, 204, 204, 0.12);
+      transform: translateY(-8px);
     }
 
-    .project-image {
-      aspect-ratio: 16 / 10;
-      background:
-        radial-gradient(circle at top right, rgba(37, 204, 204, 0.35), transparent 30%),
-        linear-gradient(135deg, #050505, var(--surface-color));
+    .project-visual {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #111111;
       display: flex;
       align-items: center;
       justify-content: center;
       color: rgba(255, 255, 255, 0.38);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      transition: 0.35s ease;
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-card:hover .project-visual {
+      transform: scale(0.985);
+      filter: brightness(1.08);
     }
 
     .project-info {
-      padding: 1.6rem;
-      background: #000;
-      border-top: 1px solid rgba(37, 204, 204, 0.22);
-    }
-
-    .project-topline {
-      color: var(--accent-cyan);
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      padding-top: 1.4rem;
+      background: transparent;
+      border-top: none;
     }
 
     .project-info h3 {
-      font-size: 1.7rem;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      font-size: 1.25rem;
+      text-transform: none;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
     }
 
     .project-info p {
       color: var(--soft-white);
       line-height: 1.5;
-      margin-bottom: 1rem;
-    }
-
-    .project-link {
-      color: var(--accent-cyan);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      margin-bottom: 0;
+      font-size: 1rem;
     }
 
     /* =========================
@@ -676,6 +676,15 @@
 
       .project-grid {
         grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .project-visual {
+        border-radius: 22px;
+      }
+
+      .project-info h3 {
+        font-size: 1.2rem;
       }
 
       .site-footer {
@@ -789,7 +798,7 @@
         <p>
           I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.
           I am skilled at taking huge amounts of data and complex user journeys and transforming them
-          into user friendly experiences and clean print designs.
+          into user-friendly experiences and clean print designs.
         </p>
 
         <div class="hero-actions">
@@ -814,55 +823,47 @@
 
       <div class="project-grid">
 
-        <a href="serena-homes.html" class="project-card">
-          <div class="project-image">Landing Page Preview</div>
+        <a href="serena-homes.html" class="project-card" aria-label="View Serena Homes project">
+          <div class="project-visual">
+            <span>Landing Page Preview</span>
+          </div>
+
           <div class="project-info">
-            <div class="project-topline">UI/UX • Landing Page Design</div>
             <h3>Serena Homes</h3>
-            <p>
-              A clean landing page design focused on trust, visual hierarchy,
-              property presentation, and smooth user flow.
-            </p>
-            <span class="project-link">View Project →</span>
+            <p>Landing Page Design</p>
           </div>
         </a>
 
-        <a href="salustiana-meorganica.html" class="project-card">
-          <div class="project-image">App Interface Preview</div>
+        <a href="salustiana-meorganica.html" class="project-card" aria-label="View Salustiana Meorganica project">
+          <div class="project-visual">
+            <span>App Interface Preview</span>
+          </div>
+
           <div class="project-info">
-            <div class="project-topline">UI/UX • App Design</div>
             <h3>Salustiana Meorganica</h3>
-            <p>
-              A beauty and healthcare app design focused on product browsing,
-              clean navigation, and a polished mobile shopping experience.
-            </p>
-            <span class="project-link">View Project →</span>
+            <p>Mobile App Design</p>
           </div>
         </a>
 
-        <a href="glidehub.html" class="project-card">
-          <div class="project-image">Mobile App Preview</div>
+        <a href="glidehub.html" class="project-card" aria-label="View GlideHub project">
+          <div class="project-visual">
+            <span>Mobile App Preview</span>
+          </div>
+
           <div class="project-info">
-            <div class="project-topline">UI/UX • App Design</div>
             <h3>GlideHub</h3>
-            <p>
-              A mobile app design project built around usability, interface structure,
-              and creating a smooth digital experience.
-            </p>
-            <span class="project-link">View Project →</span>
+            <p>Mobile App Design</p>
           </div>
         </a>
 
-        <a href="lingscars-redesign.html" class="project-card">
-          <div class="project-image">Website Redesign Preview</div>
+        <a href="lingscars-redesign.html" class="project-card" aria-label="View LingsCarsUK Website Redesign project">
+          <div class="project-visual">
+            <span>Website Redesign Preview</span>
+          </div>
+
           <div class="project-info">
-            <div class="project-topline">UI/UX • Website Redesign</div>
             <h3>LingsCarsUK Website Redesign</h3>
-            <p>
-              A website redesign focused on improving visual structure, navigation,
-              readability, and the overall user experience.
-            </p>
-            <span class="project-link">View Project →</span>
+            <p>Website Redesign</p>
           </div>
         </a>
 
