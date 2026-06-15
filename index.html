@@ -247,7 +247,7 @@
     }
 
     /* =========================
-       HERO CIRCLE / FLOW RING
+       HERO CIRCLE / GLOW ORB
     ========================= */
     .hero-ring {
       position: absolute;
@@ -255,145 +255,96 @@
       left: 50%;
       width: clamp(340px, 46vw, 680px);
       height: clamp(340px, 46vw, 680px);
-      transform: translate(-50%, -50%);
       border-radius: 50%;
+      transform: translate(-50%, -50%);
       z-index: 1;
       pointer-events: none;
+      filter: drop-shadow(0 0 45px rgba(37, 204, 204, 0.16));
     }
 
-    .ring-circle {
+    .hero-ring::before {
+      content: "";
       position: absolute;
       inset: 0;
-      border-radius: 50%;
-      border: 2px solid rgba(37, 204, 204, 0.72);
-      box-shadow:
-        0 0 35px rgba(37, 204, 204, 0.18),
-        inset 0 0 35px rgba(37, 204, 204, 0.08);
-    }
-
-    .ring-circle::before {
-      content: "";
-      position: absolute;
-      inset: -18px;
-      border-radius: 50%;
-      border: 1px solid rgba(37, 204, 204, 0.16);
-      filter: blur(5px);
-    }
-
-    .ring-circle::after {
-      content: "";
-      position: absolute;
-      inset: -2px;
       border-radius: 50%;
       background:
         conic-gradient(
-          from 90deg,
+          from 210deg,
           transparent 0deg,
-          transparent 32deg,
-          rgba(255, 255, 255, 0.95) 36deg,
-          transparent 42deg,
-          transparent 110deg,
-          rgba(255, 255, 255, 0.8) 116deg,
-          transparent 122deg,
-          transparent 212deg,
-          rgba(255, 255, 255, 0.85) 218deg,
-          transparent 224deg,
+          rgba(37, 204, 204, 0.04) 35deg,
+          rgba(37, 204, 204, 0.25) 70deg,
+          rgba(37, 204, 204, 0.9) 105deg,
+          rgba(37, 204, 204, 0.45) 135deg,
+          transparent 175deg,
           transparent 360deg
         );
+
       -webkit-mask: radial-gradient(
         farthest-side,
-        transparent calc(100% - 4px),
-        #000 calc(100% - 3px)
+        transparent calc(100% - 86px),
+        #000 calc(100% - 84px)
       );
+
       mask: radial-gradient(
         farthest-side,
-        transparent calc(100% - 4px),
-        #000 calc(100% - 3px)
+        transparent calc(100% - 86px),
+        #000 calc(100% - 84px)
       );
+
+      filter: blur(18px);
+      animation: orb-spin 6s linear infinite;
     }
 
-    .ring-motion {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      animation: flow-spin 9s linear infinite;
-    }
-
-    .marker-orbit {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      transform: rotate(var(--angle));
-    }
-
-    .flow-arrow {
-      position: absolute;
-      top: -9px;
-      left: 50%;
-      width: 66px;
-      height: 20px;
-      transform: translateX(-50%);
-    }
-
-    .flow-arrow::before {
+    .hero-ring::after {
       content: "";
       position: absolute;
-      top: 50%;
-      right: 10px;
-      width: 48px;
-      height: 2px;
-      background: rgba(255, 255, 255, 0.95);
-      transform: translateY(-50%);
-      border-radius: 999px;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+      inset: 20px;
+      border-radius: 50%;
+      background:
+        conic-gradient(
+          from 40deg,
+          rgba(255, 255, 255, 0.04),
+          transparent 60deg,
+          rgba(37, 204, 204, 0.18) 120deg,
+          rgba(37, 204, 204, 0.03) 180deg,
+          transparent 260deg,
+          rgba(255, 255, 255, 0.05) 360deg
+        );
+
+      -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 42px),
+        #000 calc(100% - 40px)
+      );
+
+      mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 42px),
+        #000 calc(100% - 40px)
+      );
+
+      filter: blur(10px);
+      opacity: 0.8;
+      animation: orb-spin-reverse 11s linear infinite;
     }
 
-    .flow-arrow::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-left: 12px solid rgba(255, 255, 255, 0.95);
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-    }
-
-    .marker-1 { --angle: 18deg; }
-    .marker-2 { --angle: 78deg; }
-    .marker-3 { --angle: 140deg; }
-    .marker-4 { --angle: 202deg; }
-    .marker-5 { --angle: 264deg; }
-    .marker-6 { --angle: 322deg; }
-
-    .marker-2 .flow-arrow {
-      width: 52px;
-    }
-
-    .marker-4 .flow-arrow {
-      width: 54px;
-    }
-
-    .marker-6 .flow-arrow {
-      width: 58px;
-    }
-
-    .marker-2 .flow-arrow::before,
-    .marker-4 .flow-arrow::before,
-    .marker-6 .flow-arrow::before {
-      width: 36px;
-    }
-
-    @keyframes flow-spin {
+    @keyframes orb-spin {
       from {
         transform: rotate(0deg);
       }
 
       to {
         transform: rotate(360deg);
+      }
+    }
+
+    @keyframes orb-spin-reverse {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
       }
     }
 
@@ -505,6 +456,7 @@
       font-size: clamp(2.5rem, 5vw, 4.5rem);
       text-transform: uppercase;
       line-height: 1;
+      margin-bottom: 1rem;
     }
 
     .section-header h2 span {
@@ -512,10 +464,15 @@
     }
 
     .section-header p {
-      max-width: 440px;
+      max-width: 520px;
       color: var(--soft-white);
       line-height: 1.6;
       font-size: 1rem;
+    }
+
+    .section-btn {
+      flex-shrink: 0;
+      margin-bottom: 0.3rem;
     }
 
     .project-grid {
@@ -585,13 +542,6 @@
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-    }
-
-    .projects-cta {
-      max-width: 1200px;
-      margin: 3rem auto 0;
-      display: flex;
-      justify-content: center;
     }
 
     /* =========================
@@ -720,6 +670,10 @@
         align-items: start;
       }
 
+      .section-btn {
+        margin-top: 0.5rem;
+      }
+
       .project-grid {
         grid-template-columns: 1fr;
       }
@@ -746,25 +700,26 @@
       }
 
       .hero-ring {
-        width: 340px;
-        height: 340px;
+        width: 360px;
+        height: 360px;
       }
 
-      .flow-arrow {
-        width: 46px;
-        height: 16px;
-        top: -7px;
+      .hero-ring::before {
+        -webkit-mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 58px),
+          #000 calc(100% - 56px)
+        );
+
+        mask: radial-gradient(
+          farthest-side,
+          transparent calc(100% - 58px),
+          #000 calc(100% - 56px)
+        );
       }
 
-      .flow-arrow::before {
-        width: 32px;
-        height: 2px;
-      }
-
-      .flow-arrow::after {
-        border-left-width: 9px;
-        border-top-width: 6px;
-        border-bottom-width: 6px;
+      .hero-ring::after {
+        inset: 14px;
       }
     }
 
@@ -774,7 +729,8 @@
       }
 
       .bg-marquee,
-      .ring-motion,
+      .hero-ring::before,
+      .hero-ring::after,
       .loader-ring {
         animation: none;
       }
@@ -820,18 +776,7 @@
         </div>
       </div>
 
-      <div class="hero-ring" aria-hidden="true">
-        <span class="ring-circle"></span>
-
-        <span class="ring-motion">
-          <span class="marker-orbit marker-1"><span class="flow-arrow"></span></span>
-          <span class="marker-orbit marker-2"><span class="flow-arrow"></span></span>
-          <span class="marker-orbit marker-3"><span class="flow-arrow"></span></span>
-          <span class="marker-orbit marker-4"><span class="flow-arrow"></span></span>
-          <span class="marker-orbit marker-5"><span class="flow-arrow"></span></span>
-          <span class="marker-orbit marker-6"><span class="flow-arrow"></span></span>
-        </span>
-      </div>
+      <div class="hero-ring" aria-hidden="true"></div>
 
       <div class="hero-content">
         <span class="eyebrow">UI/UX • Web • Editorial • Packaging</span>
@@ -844,7 +789,7 @@
         <p>
           I am a multi-disciplinary designer with a speciality in merging UI/UX and Editorial Design.
           I am skilled at taking huge amounts of data and complex user journeys and transforming them
-          into user-friendly experiences and clean print designs.
+          into user friendly experiences and clean print designs.
         </p>
 
         <div class="hero-actions">
@@ -856,11 +801,15 @@
 
     <section class="projects" id="work">
       <div class="section-header">
-        <h2>Featured <span>Projects</span></h2>
-        <p>
-          A focused selection of UI/UX and web design projects built around structure,
-          visual clarity, and user-centered thinking.
-        </p>
+        <div>
+          <h2>Featured <span>Projects</span></h2>
+          <p>
+            A focused selection of UI/UX and web design projects built around structure,
+            visual clarity, and user-centered thinking.
+          </p>
+        </div>
+
+        <a href="projects.html" class="btn btn-secondary section-btn">View All Projects</a>
       </div>
 
       <div class="project-grid">
@@ -917,10 +866,6 @@
           </div>
         </a>
 
-      </div>
-
-      <div class="projects-cta">
-        <a href="projects.html" class="btn btn-primary">View All Projects</a>
       </div>
     </section>
 
