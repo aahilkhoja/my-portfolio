@@ -17,7 +17,6 @@
       --bg-color: #000000;
       --text-main: #ffffff;
       --accent-cyan: #25cccc;
-      --surface-color: #0e3332;
       --soft-white: rgba(255, 255, 255, 0.72);
       --muted-white: rgba(255, 255, 255, 0.45);
       --line-color: rgba(255, 255, 255, 0.1);
@@ -418,13 +417,11 @@
       color: var(--bg-color);
     }
 
-    .projects,
-    .content-section {
+    .projects {
       padding: 8rem 4rem;
     }
 
-    .section-header,
-    .section-title {
+    .section-header {
       max-width: 1200px;
       margin: 0 auto 3.5rem;
       display: flex;
@@ -435,30 +432,22 @@
       padding-bottom: 2rem;
     }
 
-    .section-header h2,
-    .section-title h2 {
+    .section-header h2 {
       font-size: clamp(2.5rem, 5vw, 4.5rem);
       text-transform: uppercase;
       line-height: 1;
       margin-bottom: 1rem;
     }
 
-    .section-header h2 span,
-    .section-title h2 span {
+    .section-header h2 span {
       color: var(--accent-cyan);
     }
 
-    .section-header p,
-    .section-title p {
+    .section-header p {
       max-width: 520px;
       color: var(--soft-white);
       line-height: 1.6;
       font-size: 1rem;
-    }
-
-    .section-btn {
-      flex-shrink: 0;
-      margin-bottom: 0.3rem;
     }
 
     .project-grid {
@@ -521,60 +510,6 @@
       line-height: 1.5;
       margin-bottom: 0;
       font-size: 1rem;
-    }
-
-    .all-projects {
-      background: #030303;
-    }
-
-    .project-list {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .project-row {
-      display: grid;
-      grid-template-columns: 0.18fr 1fr 0.8fr 0.9fr auto;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--line-color);
-      transition: 0.3s ease;
-    }
-
-    .project-row:hover {
-      color: var(--accent-cyan);
-      padding-left: 1rem;
-    }
-
-    .project-number {
-      color: var(--accent-cyan);
-      letter-spacing: 2px;
-      font-size: 0.85rem;
-    }
-
-    .project-row h3 {
-      font-size: clamp(1.4rem, 3vw, 2.2rem);
-      text-transform: uppercase;
-      line-height: 1;
-    }
-
-    .project-row p {
-      color: var(--soft-white);
-      line-height: 1.4;
-    }
-
-    .project-tools {
-      color: var(--muted-white);
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
-
-    .project-arrow {
-      color: var(--accent-cyan);
-      font-size: 1.5rem;
     }
 
     .contact-preview {
@@ -671,22 +606,9 @@
       background: var(--text-main);
     }
 
-    @media (max-width: 1000px) {
-      .project-row {
-        grid-template-columns: 0.15fr 1fr;
-      }
-
-      .project-row p,
-      .project-tools,
-      .project-arrow {
-        grid-column: 2;
-      }
-    }
-
     @media (max-width: 900px) {
       .site-header,
       .projects,
-      .content-section,
       .contact-preview,
       .site-footer {
         padding-left: 1.5rem;
@@ -702,15 +624,10 @@
         width: 82px;
       }
 
-      .section-header,
-      .section-title {
+      .section-header {
         display: grid;
         grid-template-columns: 1fr;
         align-items: start;
-      }
-
-      .section-btn {
-        margin-top: 0.5rem;
       }
 
       .project-grid {
@@ -864,7 +781,7 @@
       </div>
     </section>
 
-    <section class="projects" id="featured">
+    <section class="projects" id="projects">
       <div class="section-header">
         <div>
           <h2>Featured <span>Projects</span></h2>
@@ -873,8 +790,6 @@
             visual clarity, and user-centered thinking.
           </p>
         </div>
-
-        <a href="#projects" class="btn btn-secondary section-btn">View All Projects</a>
       </div>
 
       <div class="project-grid">
@@ -921,78 +836,6 @@
             <h3>LingsCarsUK Website Redesign</h3>
             <p>Website Redesign</p>
           </div>
-        </a>
-
-      </div>
-    </section>
-
-    <section class="content-section all-projects" id="projects">
-      <div class="section-title">
-        <div>
-          <h2>All <span>Projects</span></h2>
-          <p>
-            A complete collection of UI/UX, web, editorial, and packaging work.
-            Each project will link to its own detailed project page.
-          </p>
-        </div>
-      </div>
-
-      <div class="project-list">
-
-        <a href="serena-homes.html" class="project-row">
-          <div class="project-number">01</div>
-          <h3>Serena Homes</h3>
-          <p>Landing Page Design</p>
-          <div class="project-tools">Figma, Photoshop</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a href="salustiana-meorganica.html" class="project-row">
-          <div class="project-number">02</div>
-          <h3>Salustiana Meorganica</h3>
-          <p>Mobile App Design</p>
-          <div class="project-tools">Figma, Photoshop, Illustrator</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a href="glidehub.html" class="project-row">
-          <div class="project-number">03</div>
-          <h3>GlideHub</h3>
-          <p>Mobile App Design</p>
-          <div class="project-tools">Figma, Photoshop</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a href="lingscars-redesign.html" class="project-row">
-          <div class="project-number">04</div>
-          <h3>LingsCarsUK Website Redesign</h3>
-          <p>Website Redesign</p>
-          <div class="project-tools">Figma, Photoshop</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a href="sherlock-holmes.html" class="project-row">
-          <div class="project-number">05</div>
-          <h3>Sherlock Holmes Book Design</h3>
-          <p>Editorial Design</p>
-          <div class="project-tools">InDesign, Photoshop, Illustrator</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a href="shizuka-matcha.html" class="project-row">
-          <div class="project-number">06</div>
-          <h3>Shizuka Matcha Packaging</h3>
-          <p>Packaging Design</p>
-          <div class="project-tools">Illustrator, InDesign</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a href="vows-of-the-shattered.html" class="project-row">
-          <div class="project-number">07</div>
-          <h3>Vows of the Shattered</h3>
-          <p>Packaging Design</p>
-          <div class="project-tools">InDesign, Figma, Illustrator, Photoshop</div>
-          <div class="project-arrow">→</div>
         </a>
 
       </div>

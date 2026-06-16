@@ -17,7 +17,6 @@
       --bg-color: #000000;
       --text-main: #ffffff;
       --accent-cyan: #25cccc;
-      --surface-color: #0e3332;
       --soft-white: rgba(255, 255, 255, 0.72);
       --muted-white: rgba(255, 255, 255, 0.45);
       --line-color: rgba(255, 255, 255, 0.1);
@@ -99,15 +98,17 @@
       backdrop-filter: blur(10px);
     }
 
-    .logo-text {
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+    .logo-image {
+      display: inline-flex;
+      align-items: center;
+      width: 92px;
+      max-width: 40vw;
     }
 
-    .logo-text span {
-      color: var(--accent-cyan);
+    .logo-image img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .menu-toggle {
@@ -196,18 +197,37 @@
       overflow: hidden;
     }
 
-    .page-hero::before {
-      content: "ABOUT";
+    .bg-marquee-container {
       position: absolute;
-      left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 22vw;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.025);
-      letter-spacing: -0.05em;
+      left: 0;
+      width: 100%;
+      transform: translateY(-50%);
+      opacity: 0.035;
       pointer-events: none;
       z-index: 0;
+    }
+
+    .bg-marquee {
+      display: flex;
+      white-space: nowrap;
+      animation: scroll-left 22s linear infinite;
+    }
+
+    .bg-marquee span {
+      font-size: 14vw;
+      font-weight: 800;
+      padding-right: 5vw;
+    }
+
+    @keyframes scroll-left {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
     }
 
     .about-hero-grid {
@@ -219,7 +239,7 @@
       gap: 4rem;
       align-items: center;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .eyebrow {
@@ -617,6 +637,10 @@
         padding-bottom: 1.2rem;
       }
 
+      .logo-image {
+        width: 82px;
+      }
+
       .page-hero {
         padding-top: 9rem;
       }
@@ -728,6 +752,7 @@
         scroll-behavior: auto;
       }
 
+      .bg-marquee,
       .loader-ring {
         animation: none;
       }
@@ -745,7 +770,9 @@
   </div>
 
   <header class="site-header">
-    <a href="index.html" class="logo-text">AAHIL<span>.</span></a>
+    <a href="index.html" class="logo-image" aria-label="Aahil Khoja Home">
+      <img src="images/logo.png" alt="Aahil Khoja logo">
+    </a>
 
     <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
       <span class="line line-1"></span>
@@ -766,6 +793,13 @@
   <main>
 
     <section class="page-hero">
+      <div class="bg-marquee-container">
+        <div class="bg-marquee">
+          <span>ABOUT ME — ABOUT ME — ABOUT ME — ABOUT ME — </span>
+          <span>ABOUT ME — ABOUT ME — ABOUT ME — ABOUT ME — </span>
+        </div>
+      </div>
+
       <div class="about-hero-grid">
 
         <div class="about-copy">
