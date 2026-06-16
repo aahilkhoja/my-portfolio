@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About | Aahil Khoja</title>
+
+  <style>
+    @font-face {
+      font-family: 'HeronsansCond';
+      src: local('HeronsansCond');
+      font-display: swap;
+    }
+
+    :root {
+      --bg-color: #000000;
+      --text-main: #ffffff;
+      --accent-cyan: #25cccc;
+      --surface-color: #0e3332;
+      --soft-white: rgba(255, 255, 255, 0.72);
+      --muted-white: rgba(255, 255, 255, 0.45);
+      --line-color: rgba(255, 255, 255, 0.1);
+      --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-ring {
+      width: 52px;
+      height: 52px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      border-top-color: var(--accent-cyan);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: loader-spin 0.8s linear infinite;
+    }
+
+    .loader-text {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--soft-white);
+      text-align: center;
+    }
+
+    @keyframes loader-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1.7rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo-text {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .logo-text span {
+      color: var(--accent-cyan);
+    }
+
+    .menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+      z-index: 1001;
+    }
+
+    .line {
+      display: block;
+      height: 2px;
+      background: var(--text-main);
+      transition: 0.4s ease;
+    }
+
+    .line-1,
+    .line-3 {
+      width: 32px;
+    }
+
+    .line-2 {
+      width: 20px;
+      align-self: flex-end;
+    }
+
+    .menu-toggle.active .line-1 {
+      transform: translateY(8px) rotate(45deg);
+      background: var(--accent-cyan);
+    }
+
+    .menu-toggle.active .line-2 {
+      opacity: 0;
+    }
+
+    .menu-toggle.active .line-3 {
+      transform: translateY(-8px) rotate(-45deg);
+      background: var(--accent-cyan);
+    }
+
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-color);
+      display: flex;
+      align-items: center;
+      padding: 0 4rem;
+      clip-path: circle(0% at calc(100% - 6rem) 3rem);
+      transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+      z-index: 999;
+    }
+
+    .nav-overlay.active {
+      clip-path: circle(150% at calc(100% - 6rem) 3rem);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
+
+    .nav-links a {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-cyan);
+      padding-left: 2rem;
+    }
+
+    .page-hero {
+      min-height: 100vh;
+      padding: 10rem 4rem 5rem;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "ABOUT";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22vw;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.025);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-hero-grid {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1.4rem;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+    }
+
+    .about-copy h1 {
+      font-size: clamp(3.2rem, 7vw, 6.8rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 1.8rem;
+    }
+
+    .about-copy h1 span {
+      color: var(--accent-cyan);
+    }
+
+    .about-copy p {
+      max-width: 760px;
+      color: var(--soft-white);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 170px;
+      padding: 0.95rem 1.4rem;
+      border: 1px solid var(--accent-cyan);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: var(--bg-color);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: var(--text-main);
+      border-color: var(--text-main);
+    }
+
+    .btn-secondary {
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-color);
+    }
+
+    .identity-card {
+      background: #050505;
+      border: 1px solid rgba(37, 204, 204, 0.2);
+      border-radius: 30px;
+      padding: 2rem;
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .identity-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(37, 204, 204, 0.32), transparent 25%),
+        radial-gradient(circle at 20% 80%, rgba(37, 204, 204, 0.18), transparent 22%);
+      filter: blur(30px);
+      opacity: 0.85;
+    }
+
+    .identity-card-content,
+    .identity-meta {
+      position: relative;
+      z-index: 1;
+    }
+
+    .identity-card h2 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .identity-card h2 span {
+      color: var(--accent-cyan);
+    }
+
+    .identity-card p {
+      color: var(--soft-white);
+      line-height: 1.5;
+      max-width: 310px;
+    }
+
+    .identity-meta {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .identity-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--soft-white);
+      font-size: 0.95rem;
+    }
+
+    .identity-row strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .content-section {
+      padding: 6rem 4rem;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: end;
+      border-bottom: 1px solid var(--line-color);
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 span {
+      color: var(--accent-cyan);
+    }
+
+    .section-title p {
+      max-width: 440px;
+      color: var(--soft-white);
+      line-height: 1.6;
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+    }
+
+    .approach-card {
+      background: #050505;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 2rem;
+      min-height: 260px;
+      transition: 0.3s ease;
+    }
+
+    .approach-card:hover {
+      border-color: rgba(37, 204, 204, 0.5);
+      transform: translateY(-6px);
+    }
+
+    .approach-number {
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 4rem;
+    }
+
+    .approach-card h3 {
+      font-size: 1.7rem;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .approach-card p {
+      color: var(--soft-white);
+      line-height: 1.55;
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .skills-wrap span {
+      border: 1px solid rgba(37, 204, 204, 0.35);
+      color: var(--text-main);
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      background: rgba(37, 204, 204, 0.06);
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1.3rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 0.35fr 1fr;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--line-color);
+    }
+
+    .timeline-date {
+      color: var(--accent-cyan);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.65rem;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    .timeline-content h4 {
+      color: var(--soft-white);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .timeline-content p {
+      color: var(--soft-white);
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
+    .personal-note {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 3rem;
+      align-items: center;
+      background: #050505;
+      border-radius: 30px;
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .personal-note h2 {
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .personal-note h2 span {
+      color: var(--accent-cyan);
+    }
+
+    .personal-note p {
+      color: var(--soft-white);
+      line-height: 1.7;
+      font-size: 1.08rem;
+    }
+
+    .cta-box {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .cta-box h2 span {
+      color: var(--accent-cyan);
+    }
+
+    .cta-box p {
+      color: var(--soft-white);
+      line-height: 1.6;
+      margin: 0 auto 2rem;
+      max-width: 620px;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .site-footer {
+      padding: 3rem 4rem;
+      border-top: 1px solid var(--line-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-icons {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-icons a {
+      color: var(--soft-white);
+      transition: 0.3s ease;
+      display: inline-flex;
+    }
+
+    .footer-icons a:hover {
+      color: var(--accent-cyan);
+      transform: translateY(-3px);
+    }
+
+    .social-icon {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent-cyan);
+      color: #000;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0);
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    .back-to-top:hover {
+      background: var(--text-main);
+    }
+
+    @media (max-width: 1000px) {
+      .about-hero-grid,
+      .approach-grid,
+      .personal-note {
+        grid-template-columns: 1fr;
+      }
+
+      .identity-card {
+        min-height: 360px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .site-header,
+      .page-hero,
+      .content-section,
+      .site-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .site-header {
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+      }
+
+      .page-hero {
+        padding-top: 9rem;
+      }
+
+      .section-title {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+
+      .personal-note {
+        padding: 2rem;
+      }
+
+      .site-footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-overlay {
+        padding: 0 2rem;
+      }
+
+      .nav-links a {
+        font-size: clamp(3rem, 13vw, 5rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .loader-ring {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="loader">
+    <div>
+      <div class="loader-ring"></div>
+      <div class="loader-text">Loading Profile</div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo-text">AAHIL<span>.</span></a>
+
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="about-hero-grid">
+
+        <div class="about-copy">
+          <span class="eyebrow">About Me</span>
+
+          <h1>
+            A multi-disciplinary designer merging
+            <span>UI/UX, editorial,</span>
+            and visual storytelling.
+          </h1>
+
+          <p>
+            I am a graphic designer focused on building clear digital experiences,
+            structured visual systems, and thoughtful print designs. My work connects
+            UI/UX, web design, editorial layout, packaging, and branding through a
+            process that values clarity, usability, and strong visual direction.
+          </p>
+
+          <p>
+            I enjoy turning complex information and user journeys into designs that feel
+            easier to understand, easier to navigate, and more visually engaging.
+          </p>
+
+          <div class="about-actions">
+            <a href="index.html#projects" class="btn btn-primary">View Projects</a>
+            <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Resume</a>
+          </div>
+        </div>
+
+        <aside class="identity-card" aria-label="Aahil Khoja identity card">
+          <div class="identity-card-content">
+            <h2>Aahil<br><span>Khoja</span></h2>
+            <p>
+              UI/UX designer, web designer, editorial designer, and packaging designer
+              based in Toronto.
+            </p>
+          </div>
+
+          <div class="identity-meta">
+            <div class="identity-row">
+              <strong>Focus</strong>
+              <span>Digital + Print</span>
+            </div>
+
+            <div class="identity-row">
+              <strong>Location</strong>
+              <span>Toronto, Canada</span>
+            </div>
+
+            <div class="identity-row">
+              <strong>Tools</strong>
+              <span>Figma + Adobe</span>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>Design <span>Approach</span></h2>
+          <p>
+            My work is built around making information easier to understand,
+            interfaces easier to use, and visual systems easier to remember.
+          </p>
+        </div>
+
+        <div class="approach-grid">
+          <article class="approach-card">
+            <div class="approach-number">01</div>
+            <h3>Clarity</h3>
+            <p>
+              I focus on clean communication, readable hierarchy, and designs that help
+              users understand what they are looking at quickly.
+            </p>
+          </article>
+
+          <article class="approach-card">
+            <div class="approach-number">02</div>
+            <h3>Structure</h3>
+            <p>
+              I organize content, layouts, and user flows so each design feels intentional,
+              balanced, and easy to move through.
+            </p>
+          </article>
+
+          <article class="approach-card">
+            <div class="approach-number">03</div>
+            <h3>Storytelling</h3>
+            <p>
+              I use visual direction, typography, and interaction to create work that feels
+              memorable while still being functional.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>Skills & <span>Tools</span></h2>
+          <p>
+            A mix of digital, print, interface, and production skills used across UI/UX,
+            web, editorial, branding, and packaging projects.
+          </p>
+        </div>
+
+        <div class="skills-wrap">
+          <span>Figma</span>
+          <span>Adobe Photoshop</span>
+          <span>Adobe Illustrator</span>
+          <span>Adobe InDesign</span>
+          <span>Adobe After Effects</span>
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>Webflow</span>
+          <span>UI/UX Design</span>
+          <span>Web Design</span>
+          <span>Editorial Design</span>
+          <span>Packaging Design</span>
+          <span>Branding</span>
+          <span>Visual Hierarchy</span>
+          <span>Layout Design</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-inner">
+        <div class="section-title">
+          <h2>Experience & <span>Education</span></h2>
+          <p>
+            A snapshot of my design background, including education, internship work,
+            and community-based creative projects.
+          </p>
+        </div>
+
+        <div class="timeline">
+
+          <article class="timeline-item">
+            <div class="timeline-date">Jan 2024 — Present</div>
+            <div class="timeline-content">
+              <h3>Advanced Diploma in Graphic Design</h3>
+              <h4>Humber College</h4>
+              <p>
+                Studying graphic design with a focus on visual communication, branding,
+                typography, digital design, web design, and creative problem-solving.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Sept 2024 — Nov 2024</div>
+            <div class="timeline-content">
+              <h3>Graphic Design Intern</h3>
+              <h4>Calltronix — Nairobi, Kenya</h4>
+              <p>
+                Designed brand assets, social media graphics, and promotional materials
+                while supporting marketing campaigns, event-focused visuals, and consistent
+                brand communication across digital channels.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2023</div>
+            <div class="timeline-content">
+              <h3>Visual Arts & Logistics Coordinator</h3>
+              <h4>Religious Educational Festival</h4>
+              <p>
+                Led the visual design for a collaborative art piece made with recycled
+                materials that was exhibited to international attendees and ambassadors
+                at the United Nations in Nairobi, Kenya.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2023</div>
+            <div class="timeline-content">
+              <h3>Event Branding & Design Lead</h3>
+              <h4>Festival of Friendship</h4>
+              <p>
+                Created event branding materials and custom T-shirt designs while working
+                with sponsors to define design direction, color palettes, and material choices.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-inner">
+        <div class="personal-note">
+          <h2>Beyond the <span>screen.</span></h2>
+
+          <p>
+            Outside of design, my interests in gaming, football, and digital experiences
+            influence the way I think about interaction, movement, and flow. I like design
+            that feels sharp, clear, and easy to use, but still has enough personality to
+            make people remember it.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="section-inner">
+        <div class="cta-box">
+          <h2>Let’s create something <span>intentional.</span></h2>
+
+          <p>
+            I am open to UI/UX, web design, branding, editorial, packaging, and creative
+            collaboration opportunities.
+          </p>
+
+          <div class="cta-actions">
+            <a href="resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Resume</a>
+            <a href="mailto:aahilkhoja123@gmail.com" class="btn btn-secondary">Email Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
+
+    <div class="footer-icons">
+
+      <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+
+      <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
+          <path d="M8 13h5a3 3 0 0 1 0 6H8v-6z"></path>
+          <line x1="15" y1="9" x2="20" y2="9"></line>
+          <path d="M15 14h5v1a4 4 0 0 1-8 0v-1h3z"></path>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+
+      <a href="mailto:aahilkhoja123@gmail.com" aria-label="Email">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loader = document.querySelector('.loader');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navOverlay = document.querySelector('.nav-overlay');
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const backToTopBtn = document.getElementById('backToTop');
+
+      setTimeout(() => {
+        loader.classList.add('hide');
+      }, 750);
+
+      const toggleMenu = () => {
+        menuToggle.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+
+        const isExpanded = menuToggle.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isExpanded);
+        document.body.style.overflow = isExpanded ? 'hidden' : '';
+      };
+
+      menuToggle.addEventListener('click', toggleMenu);
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (menuToggle.classList.contains('active')) {
+            toggleMenu();
+          }
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTopBtn.classList.add('show');
+        } else {
+          backToTopBtn.classList.remove('show');
+        }
+      });
+
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

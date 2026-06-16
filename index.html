@@ -372,8 +372,7 @@
     }
 
     .hero-actions,
-    .cta-actions,
-    .about-actions {
+    .cta-actions {
       display: flex;
       justify-content: center;
       gap: 1rem;
@@ -414,15 +413,9 @@
       color: var(--bg-color);
     }
 
-    .content-section,
     .projects,
-    .about-section {
+    .content-section {
       padding: 8rem 4rem;
-    }
-
-    .section-inner {
-      max-width: 1200px;
-      margin: 0 auto;
     }
 
     .section-header,
@@ -586,226 +579,6 @@
       font-size: 1.5rem;
     }
 
-    .about-hero-grid {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-copy h2 {
-      font-size: clamp(3rem, 6.5vw, 6rem);
-      line-height: 0.95;
-      text-transform: uppercase;
-      letter-spacing: -1px;
-      margin-bottom: 1.8rem;
-    }
-
-    .about-copy h2 span {
-      color: var(--accent-cyan);
-    }
-
-    .about-copy p {
-      color: var(--soft-white);
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.65;
-      margin-bottom: 1.2rem;
-    }
-
-    .about-actions {
-      justify-content: flex-start;
-      margin-top: 2rem;
-    }
-
-    .identity-card {
-      background: #050505;
-      border: 1px solid rgba(37, 204, 204, 0.2);
-      border-radius: 30px;
-      padding: 2rem;
-      min-height: 420px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .identity-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 70% 20%, rgba(37, 204, 204, 0.32), transparent 25%),
-        radial-gradient(circle at 20% 80%, rgba(37, 204, 204, 0.18), transparent 22%);
-      filter: blur(30px);
-      opacity: 0.85;
-    }
-
-    .identity-card-content,
-    .identity-meta {
-      position: relative;
-      z-index: 1;
-    }
-
-    .identity-card h2 {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      line-height: 0.95;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .identity-card h2 span {
-      color: var(--accent-cyan);
-    }
-
-    .identity-card p {
-      color: var(--soft-white);
-      line-height: 1.5;
-      max-width: 310px;
-    }
-
-    .identity-meta {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .identity-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding-top: 0.9rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--soft-white);
-      font-size: 0.95rem;
-    }
-
-    .identity-row strong {
-      color: var(--text-main);
-      font-weight: 700;
-    }
-
-    .approach-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.4rem;
-    }
-
-    .approach-card {
-      background: #050505;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: 2rem;
-      min-height: 260px;
-      transition: 0.3s ease;
-    }
-
-    .approach-card:hover {
-      border-color: rgba(37, 204, 204, 0.5);
-      transform: translateY(-6px);
-    }
-
-    .approach-number {
-      color: var(--accent-cyan);
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      margin-bottom: 4rem;
-    }
-
-    .approach-card h3 {
-      font-size: 1.7rem;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-
-    .approach-card p {
-      color: var(--soft-white);
-      line-height: 1.55;
-    }
-
-    .skills-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .skills-wrap span {
-      border: 1px solid rgba(37, 204, 204, 0.35);
-      color: var(--text-main);
-      border-radius: 999px;
-      padding: 0.75rem 1rem;
-      background: rgba(37, 204, 204, 0.06);
-      font-size: 0.95rem;
-      letter-spacing: 0.8px;
-    }
-
-    .timeline {
-      display: grid;
-      gap: 1.3rem;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 0.35fr 1fr;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--line-color);
-    }
-
-    .timeline-date {
-      color: var(--accent-cyan);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .timeline-content h3 {
-      font-size: 1.65rem;
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-    }
-
-    .timeline-content h4 {
-      color: var(--soft-white);
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-
-    .timeline-content p {
-      color: var(--soft-white);
-      line-height: 1.6;
-      max-width: 760px;
-    }
-
-    .personal-note {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 3rem;
-      align-items: center;
-      background: #050505;
-      border-radius: 30px;
-      padding: 3rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .personal-note h2 {
-      font-size: clamp(2.5rem, 5vw, 4.6rem);
-      line-height: 0.95;
-      text-transform: uppercase;
-    }
-
-    .personal-note h2 span {
-      color: var(--accent-cyan);
-    }
-
-    .personal-note p {
-      color: var(--soft-white);
-      line-height: 1.7;
-      font-size: 1.08rem;
-    }
-
     .contact-preview {
       padding: 7rem 4rem;
       text-align: center;
@@ -901,12 +674,6 @@
     }
 
     @media (max-width: 1000px) {
-      .about-hero-grid,
-      .approach-grid,
-      .personal-note {
-        grid-template-columns: 1fr;
-      }
-
       .project-row {
         grid-template-columns: 0.15fr 1fr;
       }
@@ -916,22 +683,12 @@
       .project-arrow {
         grid-column: 2;
       }
-
-      .identity-card {
-        min-height: 360px;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-      }
     }
 
     @media (max-width: 900px) {
       .site-header,
       .projects,
       .content-section,
-      .about-section,
       .contact-preview,
       .site-footer {
         padding-left: 1.5rem;
@@ -965,10 +722,6 @@
 
       .project-info h3 {
         font-size: 1.2rem;
-      }
-
-      .personal-note {
-        padding: 2rem;
       }
 
       .site-footer {
@@ -1041,7 +794,7 @@
   </div>
 
   <header class="site-header">
-    <a href="#home" class="logo-text">AAHIL<span>.</span></a>
+    <a href="index.html" class="logo-text">AAHIL<span>.</span></a>
 
     <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
       <span class="line line-1"></span>
@@ -1052,9 +805,9 @@
 
   <nav class="nav-overlay">
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -1223,219 +976,6 @@
           <div class="project-arrow">→</div>
         </a>
 
-      </div>
-    </section>
-
-    <section class="about-section" id="about">
-      <div class="about-hero-grid">
-
-        <div class="about-copy">
-          <span class="eyebrow">About Me</span>
-
-          <h2>
-            A multi-disciplinary designer merging
-            <span>UI/UX, editorial,</span>
-            and visual storytelling.
-          </h2>
-
-          <p>
-            I am a graphic designer focused on building clear digital experiences,
-            structured visual systems, and thoughtful print designs. My work connects
-            UI/UX, web design, editorial layout, packaging, and branding through a
-            process that values clarity, usability, and strong visual direction.
-          </p>
-
-          <p>
-            I enjoy turning complex information and user journeys into designs that feel
-            easier to understand, easier to navigate, and more visually engaging.
-          </p>
-
-          <div class="about-actions">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Resume</a>
-          </div>
-        </div>
-
-        <aside class="identity-card" aria-label="Aahil Khoja identity card">
-          <div class="identity-card-content">
-            <h2>Aahil<br><span>Khoja</span></h2>
-            <p>
-              UI/UX designer, web designer, editorial designer, and packaging designer
-              based in Toronto.
-            </p>
-          </div>
-
-          <div class="identity-meta">
-            <div class="identity-row">
-              <strong>Focus</strong>
-              <span>Digital + Print</span>
-            </div>
-
-            <div class="identity-row">
-              <strong>Location</strong>
-              <span>Toronto, Canada</span>
-            </div>
-
-            <div class="identity-row">
-              <strong>Tools</strong>
-              <span>Figma + Adobe</span>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="section-inner">
-        <div class="section-title">
-          <h2>Design <span>Approach</span></h2>
-          <p>
-            My work is built around making information easier to understand,
-            interfaces easier to use, and visual systems easier to remember.
-          </p>
-        </div>
-
-        <div class="approach-grid">
-          <article class="approach-card">
-            <div class="approach-number">01</div>
-            <h3>Clarity</h3>
-            <p>
-              I focus on clean communication, readable hierarchy, and designs that help
-              users understand what they are looking at quickly.
-            </p>
-          </article>
-
-          <article class="approach-card">
-            <div class="approach-number">02</div>
-            <h3>Structure</h3>
-            <p>
-              I organize content, layouts, and user flows so each design feels intentional,
-              balanced, and easy to move through.
-            </p>
-          </article>
-
-          <article class="approach-card">
-            <div class="approach-number">03</div>
-            <h3>Storytelling</h3>
-            <p>
-              I use visual direction, typography, and interaction to create work that feels
-              memorable while still being functional.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="section-inner">
-        <div class="section-title">
-          <h2>Skills & <span>Tools</span></h2>
-          <p>
-            A mix of digital, print, interface, and production skills used across UI/UX,
-            web, editorial, branding, and packaging projects.
-          </p>
-        </div>
-
-        <div class="skills-wrap">
-          <span>Figma</span>
-          <span>Adobe Photoshop</span>
-          <span>Adobe Illustrator</span>
-          <span>Adobe InDesign</span>
-          <span>Adobe After Effects</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>Webflow</span>
-          <span>UI/UX Design</span>
-          <span>Web Design</span>
-          <span>Editorial Design</span>
-          <span>Packaging Design</span>
-          <span>Branding</span>
-          <span>Visual Hierarchy</span>
-          <span>Layout Design</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="section-inner">
-        <div class="section-title">
-          <h2>Experience & <span>Education</span></h2>
-          <p>
-            A snapshot of my design background, including education, internship work,
-            and community-based creative projects.
-          </p>
-        </div>
-
-        <div class="timeline">
-
-          <article class="timeline-item">
-            <div class="timeline-date">Jan 2024 — Present</div>
-            <div class="timeline-content">
-              <h3>Advanced Diploma in Graphic Design</h3>
-              <h4>Humber College</h4>
-              <p>
-                Studying graphic design with a focus on visual communication, branding,
-                typography, digital design, web design, and creative problem-solving.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">Sept 2024 — Nov 2024</div>
-            <div class="timeline-content">
-              <h3>Graphic Design Intern</h3>
-              <h4>Calltronix — Nairobi, Kenya</h4>
-              <p>
-                Designed brand assets, social media graphics, and promotional materials
-                while supporting marketing campaigns, event-focused visuals, and consistent
-                brand communication across digital channels.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2023</div>
-            <div class="timeline-content">
-              <h3>Visual Arts & Logistics Coordinator</h3>
-              <h4>Religious Educational Festival</h4>
-              <p>
-                Led the visual design for a collaborative art piece made with recycled
-                materials that was exhibited to international attendees and ambassadors
-                at the United Nations in Nairobi, Kenya.
-              </p>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-date">2023</div>
-            <div class="timeline-content">
-              <h3>Event Branding & Design Lead</h3>
-              <h4>Festival of Friendship</h4>
-              <p>
-                Created event branding materials and custom T-shirt designs while working
-                with sponsors to define design direction, color palettes, and material choices.
-              </p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="section-inner">
-        <div class="personal-note">
-          <h2>Beyond the <span>screen.</span></h2>
-
-          <p>
-            Outside of design, my interests in gaming, football, and digital experiences
-            influence the way I think about interaction, movement, and flow. I like design
-            that feels sharp, clear, and easy to use, but still has enough personality to
-            make people remember it.
-          </p>
-        </div>
       </div>
     </section>
 
