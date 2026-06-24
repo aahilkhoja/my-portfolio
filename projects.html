@@ -20,6 +20,7 @@
       --soft-white: rgba(255, 255, 255, 0.72);
       --muted-white: rgba(255, 255, 255, 0.45);
       --line-color: rgba(255, 255, 255, 0.1);
+      --card-bg: #050505;
       --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
     }
 
@@ -196,7 +197,7 @@
     }
 
     .projects-hero {
-      min-height: 75vh;
+      min-height: 72vh;
       padding: 10rem 4rem 5rem;
       display: flex;
       align-items: center;
@@ -255,8 +256,8 @@
     }
 
     .projects-hero h1 {
-      max-width: 980px;
-      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      max-width: 1050px;
+      font-size: clamp(3.4rem, 8vw, 7.6rem);
       line-height: 0.9;
       text-transform: uppercase;
       letter-spacing: -1px;
@@ -264,7 +265,7 @@
     }
 
     .projects-hero p {
-      max-width: 660px;
+      max-width: 680px;
       color: var(--soft-white);
       font-size: clamp(1.05rem, 2vw, 1.25rem);
       line-height: 1.65;
@@ -272,47 +273,96 @@
 
     .projects-section {
       padding: 2rem 4rem 8rem;
+      position: relative;
     }
 
-    .section-header {
+    .projects-section::before {
+      content: "";
+      position: absolute;
+      top: 10rem;
+      right: -10rem;
+      width: 50vw;
+      height: 50vw;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(37, 204, 204, 0.28), transparent 28%),
+        radial-gradient(circle at 70% 70%, rgba(37, 204, 204, 0.12), transparent 32%);
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    .projects-wrap {
       max-width: 1200px;
-      margin: 0 auto 3.5rem;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .projects-topbar {
       display: flex;
       justify-content: space-between;
-      gap: 2rem;
       align-items: end;
+      gap: 2rem;
       border-bottom: 1px solid var(--line-color);
       padding-bottom: 2rem;
+      margin-bottom: 3rem;
     }
 
-    .section-header h2 {
+    .projects-topbar h2 {
       font-size: clamp(2.5rem, 5vw, 4.5rem);
-      text-transform: uppercase;
       line-height: 1;
+      text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
-    .section-header p {
+    .projects-topbar p {
       max-width: 520px;
       color: var(--soft-white);
       line-height: 1.6;
-      font-size: 1rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      justify-content: flex-end;
+    }
+
+    .filter-btn {
+      font-family: inherit;
+      cursor: pointer;
+      border: 1px solid rgba(37, 204, 204, 0.38);
+      background: rgba(37, 204, 204, 0.06);
+      color: var(--text-main);
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-cyan);
+      color: #000000;
+      border-color: var(--accent-cyan);
     }
 
     .project-grid {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 4.5rem 2.2rem;
+      gap: 5rem 3rem;
     }
 
     .project-card {
       display: block;
-      background: transparent;
-      border: none;
-      overflow: visible;
-      transition: 0.35s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .project-card.hide {
+      display: none;
     }
 
     .project-card:hover {
@@ -322,20 +372,24 @@
     .project-visual {
       width: 100%;
       aspect-ratio: 4 / 3;
-      border-radius: 28px;
+      border-radius: 0;
       overflow: hidden;
       background:
-        radial-gradient(circle at 75% 10%, rgba(37, 204, 204, 0.22), transparent 28%),
-        #111111;
+        radial-gradient(circle at 72% 20%, rgba(37, 204, 204, 0.28), transparent 32%),
+        linear-gradient(135deg, #050505, #10201f);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.42);
+      color: rgba(255, 255, 255, 0.45);
       font-size: 0.85rem;
       letter-spacing: 2px;
       text-align: center;
       text-transform: uppercase;
       transition: 0.35s ease;
+    }
+
+    .project-card:hover .project-visual {
+      filter: brightness(1.08);
     }
 
     .project-visual img {
@@ -345,77 +399,60 @@
       display: block;
     }
 
-    .project-card:hover .project-visual {
-      transform: scale(0.985);
-      filter: brightness(1.08);
-    }
-
     .project-info {
-      padding-top: 1.4rem;
+      padding-top: 1.6rem;
     }
 
-    .project-meta {
-      color: var(--accent-cyan);
-      font-size: 0.78rem;
-      letter-spacing: 2.2px;
+    .project-category {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(37, 204, 204, 0.45);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--text-main);
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
-      margin-bottom: 0.7rem;
+      margin-bottom: 1rem;
     }
 
     .project-info h3 {
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-      line-height: 1;
-      text-transform: uppercase;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.05;
+      text-transform: none;
       margin-bottom: 0.8rem;
+      max-width: 560px;
     }
 
     .project-info p {
       color: var(--soft-white);
       line-height: 1.55;
-      max-width: 520px;
+      max-width: 560px;
       margin-bottom: 1rem;
+      font-size: 1.03rem;
     }
 
     .project-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin-bottom: 1rem;
-    }
-
-    .project-tools span {
-      color: var(--text-main);
-      border: 1px solid rgba(37, 204, 204, 0.28);
-      background: rgba(37, 204, 204, 0.05);
-      border-radius: 999px;
-      padding: 0.45rem 0.75rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.5px;
+      color: var(--muted-white);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
     }
 
     .project-link {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       color: var(--accent-cyan);
       text-transform: uppercase;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.7px;
       font-size: 0.85rem;
-      margin-top: 0.2rem;
+      transition: 0.3s ease;
     }
 
-    .featured-card {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .featured-card .project-visual {
-      aspect-ratio: 16 / 9;
-    }
-
-    .featured-card .project-info {
-      padding-top: 0;
+    .project-card:hover .project-link {
+      gap: 0.9rem;
     }
 
     .contact-preview {
@@ -436,7 +473,7 @@
 
     .contact-preview p {
       color: var(--soft-white);
-      max-width: 580px;
+      max-width: 620px;
       margin: 0 auto 2rem;
       line-height: 1.6;
     }
@@ -557,17 +594,17 @@
     }
 
     @media (max-width: 1000px) {
-      .featured-card {
-        grid-column: span 1;
-        grid-template-columns: 1fr;
-      }
-
       .project-grid {
         grid-template-columns: 1fr;
       }
 
-      .featured-card .project-info {
-        padding-top: 1.4rem;
+      .projects-topbar {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .filter-bar {
+        justify-content: flex-start;
       }
     }
 
@@ -592,21 +629,11 @@
 
       .projects-hero {
         padding-top: 9rem;
-        min-height: 70vh;
-      }
-
-      .section-header {
-        display: grid;
-        grid-template-columns: 1fr;
-        align-items: start;
+        min-height: 68vh;
       }
 
       .project-grid {
-        gap: 3.5rem;
-      }
-
-      .project-visual {
-        border-radius: 22px;
+        gap: 4rem;
       }
 
       .site-footer {
@@ -628,6 +655,15 @@
         font-size: clamp(3rem, 14vw, 4.4rem);
       }
 
+      .filter-bar {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .filter-btn {
+        width: 100%;
+      }
+
       .cta-actions {
         width: 100%;
         flex-direction: column;
@@ -641,7 +677,7 @@
       }
 
       .project-info h3 {
-        font-size: clamp(1.55rem, 9vw, 2.2rem);
+        font-size: clamp(1.6rem, 9vw, 2.2rem);
       }
     }
 
@@ -719,182 +755,184 @@
         </h1>
 
         <p>
-          A collection of UI/UX, web, editorial, and packaging projects. Each project is
-          designed to show process, visual thinking, problem-solving, and final execution.
+          A curated project archive showing UI/UX design, product design, and editorial design work.
+          Use the filters below to sort projects by discipline.
         </p>
       </div>
     </section>
 
     <section class="projects-section">
-      <div class="section-header">
-        <div>
-          <h2>Project <span class="text-accent">Archive</span></h2>
-          <p>
-            UI/UX projects are shown first, followed by editorial and packaging work.
-          </p>
+      <div class="projects-wrap">
+
+        <div class="projects-topbar">
+          <div>
+            <h2>Project Archive</h2>
+            <p>
+              UI/UX projects are shown first, followed by product and editorial design work.
+              Each project includes a short explanation and will later link to a full case study page.
+            </p>
+          </div>
+
+          <div class="filter-bar" aria-label="Project filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="uiux">UI/UX Design</button>
+            <button class="filter-btn" data-filter="product">Product Design</button>
+            <button class="filter-btn" data-filter="editorial">Editorial Design</button>
+          </div>
         </div>
-      </div>
 
-      <div class="project-grid">
+        <div class="project-grid">
 
-        <a href="serena-homes.html" class="project-card featured-card" aria-label="View Serena Homes project">
-          <div class="project-visual">
-            <span>Landing Page Preview</span>
-          </div>
-
-          <div class="project-info">
-            <div class="project-meta">UI/UX • Landing Page Design</div>
-            <h3>Serena Homes</h3>
-            <p>
-              A clean landing page design focused on trust, visual hierarchy, property
-              presentation, and smooth user flow.
-            </p>
-
-            <div class="project-tools">
-              <span>Figma</span>
-              <span>Photoshop</span>
+          <a href="serena-homes.html" class="project-card" data-category="uiux" aria-label="View Serena Homes project">
+            <div class="project-visual">
+              <span>Landing Page Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">UI/UX Design</div>
 
-        <a href="salustiana-meorganica.html" class="project-card" aria-label="View Salustiana Meorganica project">
-          <div class="project-visual">
-            <span>App Interface Preview</span>
-          </div>
+              <h3>Serena Homes Landing Page Design</h3>
 
-          <div class="project-info">
-            <div class="project-meta">UI/UX • App Design</div>
-            <h3>Salustiana Meorganica</h3>
-            <p>
-              A beauty and healthcare app design focused on product browsing, clean navigation,
-              and a polished mobile shopping experience.
-            </p>
+              <p>
+                A landing page and logo design project for Serena Homes, focused on creating a modern
+                home-rental experience with simple navigation, clear calls to action, and a visual link
+                to the Serena brand.
+              </p>
 
-            <div class="project-tools">
-              <span>Figma</span>
-              <span>Photoshop</span>
-              <span>Illustrator</span>
+              <div class="project-tools">Figma</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+          <a href="salustiana-meorganica.html" class="project-card" data-category="uiux" aria-label="View Salustiana Meorganica project">
+            <div class="project-visual">
+              <span>App Interface Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">UI/UX Design</div>
 
-        <a href="glidehub.html" class="project-card" aria-label="View GlideHub project">
-          <div class="project-visual">
-            <span>Mobile App Preview</span>
-          </div>
+              <h3>Salustiana Meorganica App Design</h3>
 
-          <div class="project-info">
-            <div class="project-meta">UI/UX • App Design</div>
-            <h3>GlideHub</h3>
-            <p>
-              A mobile app design project built around usability, interface structure,
-              and creating a smooth digital experience.
-            </p>
+              <p>
+                A high-fidelity mobile app design for a beauty and healthcare brand. The interface
+                focuses on product categories, smooth navigation, clear checkout flow, and a clean
+                shopping experience.
+              </p>
 
-            <div class="project-tools">
-              <span>Figma</span>
-              <span>Photoshop</span>
+              <div class="project-tools">Figma</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+          <a href="glidehub.html" class="project-card" data-category="uiux" aria-label="View GlideHub project">
+            <div class="project-visual">
+              <span>Mobile App Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">UI/UX Design</div>
 
-        <a href="lingscars-redesign.html" class="project-card" aria-label="View LingsCarsUK Website Redesign project">
-          <div class="project-visual">
-            <span>Website Redesign Preview</span>
-          </div>
+              <h3>GlideHub App Design</h3>
 
-          <div class="project-info">
-            <div class="project-meta">UI/UX • Website Redesign</div>
-            <h3>LingsCarsUK Website Redesign</h3>
-            <p>
-              A website redesign focused on improving visual structure, navigation,
-              readability, and the overall user experience.
-            </p>
+              <p>
+                A mobile app design project built around usability, interface structure, and creating
+                a smooth digital experience. This project will show app flow, screens, and final mockups.
+              </p>
 
-            <div class="project-tools">
-              <span>Figma</span>
-              <span>Photoshop</span>
+              <div class="project-tools">Figma, Photoshop</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+          <a href="lingscars-redesign.html" class="project-card" data-category="uiux" aria-label="View Ling's Cars UK project">
+            <div class="project-visual">
+              <span>Website Redesign Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">UI/UX Design</div>
 
-        <a href="sherlock-holmes.html" class="project-card" aria-label="View Sherlock Holmes Book Design project">
-          <div class="project-visual">
-            <span>Book Design Preview</span>
-          </div>
+              <h3>Ling’s Cars UK Website Redesign</h3>
 
-          <div class="project-info">
-            <div class="project-meta">Editorial • Book Design</div>
-            <h3>Sherlock Holmes Book Design</h3>
-            <p>
-              An editorial book design project exploring typography, page rhythm, visual tone,
-              and classic mystery-inspired layout design.
-            </p>
+              <p>
+                A website redesign that keeps the brand’s playful identity while improving content hierarchy,
+                navigation, readability, and the user journey for renting or purchasing cars.
+              </p>
 
-            <div class="project-tools">
-              <span>InDesign</span>
-              <span>Photoshop</span>
-              <span>Illustrator</span>
+              <div class="project-tools">Figma</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+          <a href="shizuka-matcha.html" class="project-card" data-category="product" aria-label="View Shizuka Matcha project">
+            <div class="project-visual">
+              <span>Packaging Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">Product Design</div>
 
-        <a href="shizuka-matcha.html" class="project-card" aria-label="View Shizuka Matcha Packaging project">
-          <div class="project-visual">
-            <span>Packaging Preview</span>
-          </div>
+              <h3>Shizuka Matcha Packaging</h3>
 
-          <div class="project-info">
-            <div class="project-meta">Packaging • Brand System</div>
-            <h3>Shizuka Matcha Packaging</h3>
-            <p>
-              A Japanese-inspired packaging design system focused on premium visual tone,
-              structure, and product identity.
-            </p>
+              <p>
+                A premium organic tea packaging collection built around seasonal flavors. The design
+                keeps the brand consistent while changing illustrations and color palettes for each flavor.
+              </p>
 
-            <div class="project-tools">
-              <span>Illustrator</span>
-              <span>InDesign</span>
+              <div class="project-tools">Adobe Illustrator, Adobe Photoshop</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+          <a href="vows-of-the-shattered.html" class="project-card" data-category="product" aria-label="View Vows of the Shattered project">
+            <div class="project-visual">
+              <span>Limited Edition Box Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">Product Design</div>
 
-        <a href="vows-of-the-shattered.html" class="project-card" aria-label="View Vows of the Shattered Packaging Design project">
-          <div class="project-visual">
-            <span>Packaging Design Preview</span>
-          </div>
+              <h3>Vows of the Shattered Packaging Design</h3>
 
-          <div class="project-info">
-            <div class="project-meta">Packaging • Visual System</div>
-            <h3>Vows of the Shattered</h3>
-            <p>
-              A packaging design project focused on atmosphere, visual storytelling,
-              composition, and dramatic product presentation.
-            </p>
+              <p>
+                A fictional game packaging project for a limited edition box set, including a game case,
+                poster, figurine concept, and collectible card system with a strong typographic direction.
+              </p>
 
-            <div class="project-tools">
-              <span>InDesign</span>
-              <span>Figma</span>
-              <span>Illustrator</span>
-              <span>Photoshop</span>
+              <div class="project-tools">Adobe Illustrator, Adobe InDesign</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+          <a href="sherlock-holmes.html" class="project-card" data-category="editorial" aria-label="View Sherlock Holmes project">
+            <div class="project-visual">
+              <span>Book Design Preview</span>
             </div>
 
-            <div class="project-link">View Project →</div>
-          </div>
-        </a>
+            <div class="project-info">
+              <div class="project-category">Editorial Design</div>
 
+              <h3>Sherlock Holmes Book Design</h3>
+
+              <p>
+                An editorial book design project exploring typography, page rhythm, illustration,
+                visual pacing, and a classic mystery-inspired reading experience.
+              </p>
+
+              <div class="project-tools">InDesign, Photoshop, Illustrator</div>
+
+              <div class="project-link">View Case Study →</div>
+            </div>
+          </a>
+
+        </div>
       </div>
     </section>
 
@@ -902,7 +940,7 @@
       <h2>Want to see the <span>process?</span></h2>
 
       <p>
-        Each project page will include the overview, research, sketches or wireframes,
+        Each full project page will include the overview, research, sketches or wireframes,
         process images, final design, and mockups.
       </p>
 
@@ -963,6 +1001,8 @@
       const navOverlay = document.querySelector('.nav-overlay');
       const navLinks = document.querySelectorAll('.nav-links a');
       const backToTopBtn = document.getElementById('backToTop');
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
 
       setTimeout(() => {
         loader.classList.add('hide');
@@ -984,6 +1024,25 @@
           if (menuToggle.classList.contains('active')) {
             toggleMenu();
           }
+        });
+      });
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filterValue = button.getAttribute('data-filter');
+
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+
+            if (filterValue === 'all' || filterValue === category) {
+              card.classList.remove('hide');
+            } else {
+              card.classList.add('hide');
+            }
+          });
         });
       });
 
