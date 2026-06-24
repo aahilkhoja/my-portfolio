@@ -20,7 +20,6 @@
       --soft-white: rgba(255, 255, 255, 0.72);
       --muted-white: rgba(255, 255, 255, 0.45);
       --line-color: rgba(255, 255, 255, 0.1);
-      --card-bg: #050505;
       --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
     }
 
@@ -197,8 +196,8 @@
     }
 
     .projects-hero {
-      min-height: 72vh;
-      padding: 10rem 4rem 5rem;
+      min-height: 58vh;
+      padding: 10rem 4rem 4rem;
       display: flex;
       align-items: center;
       position: relative;
@@ -211,7 +210,7 @@
       left: 0;
       width: 100%;
       transform: translateY(-50%);
-      opacity: 0.035;
+      opacity: 0.075;
       pointer-events: none;
       z-index: 0;
     }
@@ -256,40 +255,23 @@
     }
 
     .projects-hero h1 {
-      max-width: 1050px;
-      font-size: clamp(3.4rem, 8vw, 7.6rem);
+      font-size: clamp(4rem, 12vw, 10rem);
       line-height: 0.9;
       text-transform: uppercase;
-      letter-spacing: -1px;
-      margin-bottom: 1.8rem;
+      letter-spacing: -2px;
+      margin-bottom: 1.5rem;
     }
 
     .projects-hero p {
-      max-width: 680px;
+      max-width: 620px;
       color: var(--soft-white);
       font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     .projects-section {
       padding: 2rem 4rem 8rem;
       position: relative;
-    }
-
-    .projects-section::before {
-      content: "";
-      position: absolute;
-      top: 10rem;
-      right: -10rem;
-      width: 50vw;
-      height: 50vw;
-      background:
-        radial-gradient(circle at 35% 35%, rgba(37, 204, 204, 0.28), transparent 28%),
-        radial-gradient(circle at 70% 70%, rgba(37, 204, 204, 0.12), transparent 32%);
-      filter: blur(80px);
-      pointer-events: none;
-      opacity: 0.9;
-      z-index: 0;
     }
 
     .projects-wrap {
@@ -370,27 +352,27 @@
     }
 
     .project-visual {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        border-radius: 28px;
-        overflow: hidden;
-        background: #111111;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(255, 255, 255, 0.38);
-        font-size: 0.85rem;
-        letter-spacing: 2px;
-        text-align: center;
-        text-transform: uppercase;
-        transition: 0.35s ease;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #111111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.38);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.35s ease;
     }
-
 
     .project-card:hover .project-visual {
-        transform: scale(0.985);
-        filter: brightness(1.08);
+      transform: scale(0.985);
+      filter: brightness(1.08);
     }
+
     .project-visual img {
       width: 100%;
       height: 100%;
@@ -628,7 +610,7 @@
 
       .projects-hero {
         padding-top: 9rem;
-        min-height: 68vh;
+        min-height: 56vh;
       }
 
       .project-grid {
@@ -651,7 +633,7 @@
 
     @media (max-width: 520px) {
       .projects-hero h1 {
-        font-size: clamp(3rem, 14vw, 4.4rem);
+        font-size: clamp(3.8rem, 20vw, 6rem);
       }
 
       .filter-bar {
@@ -730,7 +712,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
@@ -747,15 +729,10 @@
       <div class="projects-hero-inner">
         <span class="eyebrow">Selected Work</span>
 
-        <h1>
-          Projects built through
-          <span class="text-accent">structure, clarity,</span>
-          and visual direction.
-        </h1>
+        <h1>Projects</h1>
 
         <p>
-          A curated project archive showing UI/UX design, product design, and editorial design work.
-          Use the filters below to sort projects by discipline.
+          A focused archive of UI/UX, product, and editorial design work.
         </p>
       </div>
     </section>
@@ -767,8 +744,7 @@
           <div>
             <h2>Project Archive</h2>
             <p>
-              UI/UX projects are shown first, followed by product and editorial design work.
-              Each project includes a short explanation and will later link to a full case study page.
+              Use the filters to view work by discipline.
             </p>
           </div>
 
@@ -793,9 +769,7 @@
               <h3>Serena Homes Landing Page Design</h3>
 
               <p>
-                A landing page and logo design project for Serena Homes, focused on creating a modern
-                home-rental experience with simple navigation, clear calls to action, and a visual link
-                to the Serena brand.
+                A landing page and logo design project for Serena Homes, focused on a modern home-rental experience with clear navigation and calls to action.
               </p>
 
               <div class="project-tools">Figma</div>
@@ -815,9 +789,7 @@
               <h3>Salustiana Meorganica App Design</h3>
 
               <p>
-                A high-fidelity mobile app design for a beauty and healthcare brand. The interface
-                focuses on product categories, smooth navigation, clear checkout flow, and a clean
-                shopping experience.
+                A high-fidelity beauty and healthcare app focused on product browsing, clean navigation, and a polished mobile shopping flow.
               </p>
 
               <div class="project-tools">Figma</div>
@@ -837,8 +809,7 @@
               <h3>GlideHub App Design</h3>
 
               <p>
-                A mobile app design project built around usability, interface structure, and creating
-                a smooth digital experience. This project will show app flow, screens, and final mockups.
+                A mobile app design project built around usability, interface structure, and creating a smooth digital experience.
               </p>
 
               <div class="project-tools">Figma, Photoshop</div>
@@ -858,8 +829,7 @@
               <h3>Ling’s Cars UK Website Redesign</h3>
 
               <p>
-                A website redesign that keeps the brand’s playful identity while improving content hierarchy,
-                navigation, readability, and the user journey for renting or purchasing cars.
+                A website redesign that keeps the brand’s playful identity while improving hierarchy, navigation, readability, and user flow.
               </p>
 
               <div class="project-tools">Figma</div>
@@ -879,8 +849,7 @@
               <h3>Shizuka Matcha Packaging</h3>
 
               <p>
-                A premium organic tea packaging collection built around seasonal flavors. The design
-                keeps the brand consistent while changing illustrations and color palettes for each flavor.
+                A premium organic tea packaging collection built around seasonal flavors, illustration, and a consistent brand system.
               </p>
 
               <div class="project-tools">Adobe Illustrator, Adobe Photoshop</div>
@@ -900,8 +869,7 @@
               <h3>Vows of the Shattered Packaging Design</h3>
 
               <p>
-                A fictional game packaging project for a limited edition box set, including a game case,
-                poster, figurine concept, and collectible card system with a strong typographic direction.
+                A fictional game packaging project for a limited edition box set with a strong typographic and collectible design direction.
               </p>
 
               <div class="project-tools">Adobe Illustrator, Adobe InDesign</div>
@@ -921,8 +889,7 @@
               <h3>Sherlock Holmes Book Design</h3>
 
               <p>
-                An editorial book design project exploring typography, page rhythm, illustration,
-                visual pacing, and a classic mystery-inspired reading experience.
+                An editorial book design project exploring typography, page rhythm, illustration, and a mystery-inspired reading experience.
               </p>
 
               <div class="project-tools">InDesign, Photoshop, Illustrator</div>
@@ -939,12 +906,11 @@
       <h2>Want to see the <span>process?</span></h2>
 
       <p>
-        Each full project page will include the overview, research, sketches or wireframes,
-        process images, final design, and mockups.
+        Each full project page will include the overview, research, sketches or wireframes, process images, final design, and mockups.
       </p>
 
       <div class="cta-actions">
-        <a href="mailto:aahilkhoja123@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="contact.html" class="btn btn-primary">Contact Me</a>
         <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Resume</a>
       </div>
     </section>
