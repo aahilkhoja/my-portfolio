@@ -196,45 +196,12 @@
     }
 
     .projects-hero {
-      min-height: 58vh;
-      padding: 10rem 4rem 4rem;
+      min-height: 46vh;
+      padding: 10rem 4rem 2rem;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       position: relative;
       overflow: hidden;
-    }
-
-    .bg-marquee-container {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      transform: translateY(-50%);
-      opacity: 0.075;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .bg-marquee {
-      display: flex;
-      white-space: nowrap;
-      animation: scroll-left 22s linear infinite;
-    }
-
-    .bg-marquee span {
-      font-size: 14vw;
-      font-weight: 800;
-      padding-right: 5vw;
-    }
-
-    @keyframes scroll-left {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
     }
 
     .projects-hero-inner {
@@ -270,7 +237,7 @@
     }
 
     .projects-section {
-      padding: 2rem 4rem 8rem;
+      padding: 1.5rem 4rem 8rem;
       position: relative;
     }
 
@@ -281,27 +248,13 @@
       z-index: 1;
     }
 
-    .projects-topbar {
+    .filter-row {
       display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 2rem;
+      justify-content: flex-end;
+      align-items: center;
       border-bottom: 1px solid var(--line-color);
       padding-bottom: 2rem;
       margin-bottom: 3rem;
-    }
-
-    .projects-topbar h2 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      line-height: 1;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .projects-topbar p {
-      max-width: 520px;
-      color: var(--soft-white);
-      line-height: 1.6;
     }
 
     .filter-bar {
@@ -579,9 +532,8 @@
         grid-template-columns: 1fr;
       }
 
-      .projects-topbar {
-        display: grid;
-        grid-template-columns: 1fr;
+      .filter-row {
+        justify-content: flex-start;
       }
 
       .filter-bar {
@@ -610,7 +562,7 @@
 
       .projects-hero {
         padding-top: 9rem;
-        min-height: 56vh;
+        min-height: 44vh;
       }
 
       .project-grid {
@@ -639,6 +591,7 @@
       .filter-bar {
         display: grid;
         grid-template-columns: 1fr;
+        width: 100%;
       }
 
       .filter-btn {
@@ -678,7 +631,6 @@
         scroll-behavior: auto;
       }
 
-      .bg-marquee,
       .loader-ring {
         animation: none;
       }
@@ -719,13 +671,6 @@
   <main>
 
     <section class="projects-hero">
-      <div class="bg-marquee-container">
-        <div class="bg-marquee">
-          <span>PROJECTS — PROJECTS — PROJECTS — PROJECTS — </span>
-          <span>PROJECTS — PROJECTS — PROJECTS — PROJECTS — </span>
-        </div>
-      </div>
-
       <div class="projects-hero-inner">
         <span class="eyebrow">Selected Work</span>
 
@@ -740,14 +685,7 @@
     <section class="projects-section">
       <div class="projects-wrap">
 
-        <div class="projects-topbar">
-          <div>
-            <h2>Project Archive</h2>
-            <p>
-              Use the filters to view work by discipline.
-            </p>
-          </div>
-
+        <div class="filter-row">
           <div class="filter-bar" aria-label="Project filters">
             <button class="filter-btn active" data-filter="all">All</button>
             <button class="filter-btn" data-filter="uiux">UI/UX Design</button>
