@@ -17,8 +17,8 @@
       --bg-color: #000000;
       --text-main: #ffffff;
       --accent-cyan: #25cccc;
-      --soft-white: rgba(255, 255, 255, 0.72);
-      --muted-white: rgba(255, 255, 255, 0.45);
+      --soft-white: rgba(255, 255, 255, 0.76);
+      --muted-white: rgba(255, 255, 255, 0.68);
       --line-color: rgba(255, 255, 255, 0.1);
       --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
     }
@@ -239,7 +239,7 @@
       width: 100%;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
+      grid-template-columns: 1.25fr 0.85fr;
       gap: 4rem;
       align-items: center;
       position: relative;
@@ -256,18 +256,19 @@
     }
 
     .about-copy h1 {
-      font-size: clamp(3.2rem, 7vw, 6.8rem);
-      line-height: 0.95;
+      font-size: clamp(2.7rem, 5.4vw, 5.2rem);
+      line-height: 1;
       text-transform: uppercase;
       letter-spacing: -1px;
       margin-bottom: 1.8rem;
       color: var(--text-main);
+      max-width: 820px;
     }
 
     .about-copy p {
       max-width: 760px;
       color: var(--soft-white);
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
       line-height: 1.65;
       margin-bottom: 1.2rem;
     }
@@ -548,7 +549,7 @@
     }
 
     .cta-box h2 {
-      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-size: clamp(2.2rem, 4.8vw, 4.2rem);
       line-height: 1;
       text-transform: uppercase;
       margin-bottom: 1rem;
@@ -606,7 +607,7 @@
     }
 
     .footer-text {
-      color: rgba(255, 255, 255, 0.45);
+      color: var(--soft-white);
       font-size: 0.9rem;
       letter-spacing: 1px;
     }
@@ -675,6 +676,10 @@
         padding-top: 9rem;
       }
 
+      .about-copy h1 {
+        font-size: clamp(2.6rem, 11vw, 4.4rem);
+      }
+
       .section-title {
         display: grid;
         grid-template-columns: 1fr;
@@ -731,7 +736,11 @@
 
     @media (max-width: 520px) {
       .about-copy h1 {
-        font-size: clamp(2.6rem, 12vw, 4rem);
+        font-size: clamp(2.3rem, 10.5vw, 3.6rem);
+      }
+
+      .cta-box h2 {
+        font-size: clamp(2.2rem, 11vw, 3.4rem);
       }
 
       .about-actions,
@@ -775,7 +784,7 @@
       }
 
       .about-copy h1 {
-        font-size: clamp(2.35rem, 11vw, 3.4rem);
+        font-size: clamp(2.1rem, 10vw, 3rem);
       }
     }
 
@@ -875,7 +884,7 @@
               </h2>
 
               <p>
-                UI/UX, web, editorial, and packaging designer.
+                UI/UX, web, editorial, and packaging designer based in Toronto.
               </p>
             </div>
 
@@ -1001,7 +1010,6 @@
 
           <div class="cta-actions">
             <a href="contact.html" class="btn btn-primary">Contact Me</a>
-            <a href="resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Resume</a>
           </div>
         </div>
       </div>
