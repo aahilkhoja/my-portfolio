@@ -230,6 +230,95 @@ a {
   transform: translate(18px, 18px) scale(1);
 }
 
+/* Print-inspired registration marks — small corner brackets referencing
+   crop/registration marks from print production, echoing the editorial
+   and packaging side of the work. */
+
+.has-crop-marks {
+  position: relative;
+}
+
+.has-crop-marks::before {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.55;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan)),
+    linear-gradient(var(--accent-cyan), var(--accent-cyan));
+  background-size:
+    16px 1.5px, 1.5px 16px,
+    16px 1.5px, 1.5px 16px,
+    16px 1.5px, 1.5px 16px,
+    16px 1.5px, 1.5px 16px;
+  background-position:
+    top left, top left,
+    top right, top right,
+    bottom left, bottom left,
+    bottom right, bottom right;
+}
+
+/* Decorative asterisk accent on eyebrow labels */
+
+.eyebrow {
+  position: relative;
+}
+
+.eyebrow::before {
+  content: "\2731";
+  display: inline-block;
+  margin-right: 0.55em;
+  color: var(--accent-cyan);
+  animation: eyebrow-spin 7s linear infinite;
+}
+
+@keyframes eyebrow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Arrow accent for links that leave the site */
+
+.nav-socials a::after,
+.info-links a::after {
+  content: "\2197";
+  display: inline-block;
+  margin-left: 0.35em;
+  font-size: 0.85em;
+}
+
+/* Numbered index badge on project cards */
+
+.card-index {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(37, 204, 204, 0.5);
+  backdrop-filter: blur(6px);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+}
+
 /* Header / nav */
 
 .site-header {
@@ -660,7 +749,8 @@ a {
   .bg-marquee,
   .loader-ring,
   .status-dot::after,
-  .cursor-tag::before {
+  .cursor-tag::before,
+  .eyebrow::before {
     animation: none;
   }
 
