@@ -1,0 +1,400 @@
+/* Shared layout for individual project case-study pages */
+
+.case-hero {
+  padding: 10rem 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.case-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted-white);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  transition: 0.25s ease;
+}
+
+.case-back:hover {
+  color: var(--accent-cyan);
+}
+
+.case-category {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(37, 204, 204, 0.45);
+  background: rgba(37, 204, 204, 0.06);
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+.case-hero h1 {
+  font-size: clamp(2.6rem, 6vw, 5.2rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  max-width: 900px;
+  margin-bottom: 1.4rem;
+}
+
+.case-hero > .case-hero-inner > p {
+  max-width: 660px;
+  color: var(--soft-white);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.case-meta-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line-color);
+  border-bottom: 1px solid var(--line-color);
+}
+
+.case-meta-item span {
+  display: block;
+}
+
+.case-meta-item .meta-label {
+  font-size: 0.75rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 0.5rem;
+}
+
+.case-meta-item .meta-value {
+  font-size: 1rem;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.case-cover {
+  margin: 3rem auto 0;
+  max-width: 1200px;
+  border-radius: 28px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9.5;
+  background: #111111;
+}
+
+.case-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Section shell reused for mood board / sketches / final design / mockups / prototype */
+
+.case-section {
+  padding: 5.5rem 4rem;
+}
+
+.case-section:nth-of-type(even) {
+  background: #030303;
+}
+
+.case-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.case-section-head {
+  margin-bottom: 2.75rem;
+  max-width: 720px;
+}
+
+.case-index {
+  display: block;
+  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.case-section-head h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.9rem;
+}
+
+.case-section-head p {
+  color: var(--soft-white);
+  line-height: 1.6;
+}
+
+/* Mood board */
+
+.moodboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 170px;
+  gap: 1rem;
+}
+
+.moodboard-grid > *:nth-child(4n+1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Sketches */
+
+.sketch-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.sketch-gallery > * {
+  aspect-ratio: 4 / 3;
+}
+
+/* Final design (flat 2D) */
+
+.final-design-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.final-design-grid > * {
+  aspect-ratio: 4 / 3;
+}
+
+.final-design-grid.single-column {
+  grid-template-columns: 1fr;
+}
+
+.final-design-grid.single-column > * {
+  aspect-ratio: 16 / 9;
+}
+
+/* Mockup files */
+
+.mockup-showcase {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.mockup-showcase > * {
+  aspect-ratio: 3 / 4;
+}
+
+.mockup-showcase > *:first-child {
+  grid-column: span 2;
+  aspect-ratio: 8 / 5;
+}
+
+/* Media tiles (shared) */
+
+.media-tile {
+  border-radius: 22px;
+  overflow: hidden;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.media-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder tile — tasteful empty state, not a broken image */
+
+.placeholder-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  height: 100%;
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.015);
+  color: var(--muted-white);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.placeholder-tile svg {
+  width: 26px;
+  height: 26px;
+  opacity: 0.55;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.placeholder-tile span {
+  font-size: 0.72rem;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  max-width: 200px;
+  line-height: 1.5;
+}
+
+/* Figma prototype embed (UI/UX projects) */
+
+.figma-embed-wrap {
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  aspect-ratio: 16 / 10;
+  background: #0a0a0a;
+}
+
+.figma-embed-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.figma-embed-wrap .placeholder-tile {
+  border: none;
+  border-radius: 0;
+}
+
+.figma-note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.2rem;
+  color: var(--muted-white);
+  font-size: 0.85rem;
+}
+
+/* Case navigation footer */
+
+.case-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 4rem;
+  border-top: 1px solid var(--line-color);
+}
+
+.case-nav a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--soft-white);
+  transition: 0.25s ease;
+}
+
+.case-nav a:hover {
+  color: var(--accent-cyan);
+}
+
+.case-nav .nav-direction {
+  font-size: 0.75rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--muted-white);
+}
+
+.case-nav .nav-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.case-nav .next-link {
+  text-align: right;
+  align-items: flex-end;
+}
+
+@media (max-width: 1000px) {
+  .case-meta-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .moodboard-grid,
+  .sketch-gallery,
+  .mockup-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mockup-showcase > *:first-child {
+    grid-column: span 2;
+  }
+
+  .final-design-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .final-design-grid > * {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 900px) {
+  .case-hero,
+  .case-section,
+  .case-nav {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .case-hero {
+    padding-top: 9rem;
+  }
+
+  .case-meta-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .moodboard-grid,
+  .sketch-gallery,
+  .mockup-showcase {
+    grid-template-columns: 1fr;
+  }
+
+  .moodboard-grid > *:nth-child(4n+1),
+  .mockup-showcase > *:first-child {
+    grid-column: span 1;
+  }
+
+  .case-meta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .case-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .case-nav .next-link {
+    text-align: left;
+    align-items: flex-start;
+  }
+}

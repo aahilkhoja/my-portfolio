@@ -1,197 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>About | Aahil Khoja</title>
+  <meta name="description" content="Learn about Aahil Khoja, a Toronto-based multi-disciplinary designer specializing in UI/UX, web, editorial, and packaging design.">
+
+  <meta property="og:title" content="About | Aahil Khoja">
+  <meta property="og:description" content="A multi-disciplinary designer merging UI/UX, editorial, and visual storytelling.">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
 
   <style>
-    @font-face {
-      font-family: 'HeronsansCond';
-      src: local('HeronsansCond');
-      font-display: swap;
-    }
-
-    :root {
-      --bg-color: #000000;
-      --text-main: #ffffff;
-      --accent-cyan: #25cccc;
-      --soft-white: rgba(255, 255, 255, 0.76);
-      --muted-white: rgba(255, 255, 255, 0.68);
-      --line-color: rgba(255, 255, 255, 0.1);
-      --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-main);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .text-accent {
-      color: var(--accent-cyan);
-    }
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-ring {
-      width: 52px;
-      height: 52px;
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      border-top-color: var(--accent-cyan);
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      animation: loader-spin 0.8s linear infinite;
-    }
-
-    .loader-text {
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--soft-white);
-      text-align: center;
-    }
-
-    @keyframes loader-spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.7rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
-
-    .logo-image {
-      display: inline-flex;
-      align-items: center;
-      width: 92px;
-      max-width: 40vw;
-    }
-
-    .logo-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .menu-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 10px;
-      z-index: 1001;
-    }
-
-    .line {
-      display: block;
-      height: 2px;
-      background: var(--text-main);
-      transition: 0.4s ease;
-    }
-
-    .line-1,
-    .line-3 {
-      width: 32px;
-    }
-
-    .line-2 {
-      width: 20px;
-      align-self: flex-end;
-    }
-
-    .menu-toggle.active .line-1 {
-      transform: translateY(8px) rotate(45deg);
-      background: var(--accent-cyan);
-    }
-
-    .menu-toggle.active .line-2 {
-      opacity: 0;
-    }
-
-    .menu-toggle.active .line-3 {
-      transform: translateY(-8px) rotate(-45deg);
-      background: var(--accent-cyan);
-    }
-
-    .nav-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-color);
-      display: flex;
-      align-items: center;
-      padding: 0 4rem;
-      clip-path: circle(0% at calc(100% - 6rem) 3rem);
-      transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
-      z-index: 999;
-    }
-
-    .nav-overlay.active {
-      clip-path: circle(150% at calc(100% - 6rem) 3rem);
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-    }
-
-    .nav-links a {
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-cyan);
-      padding-left: 2rem;
-    }
-
     .page-hero {
       min-height: 100vh;
       padding: 10rem 4rem 5rem;
@@ -201,37 +25,8 @@
       overflow: hidden;
     }
 
-    .bg-marquee-container {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      transform: translateY(-50%);
+    .page-hero .bg-marquee-container {
       opacity: 0.075;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .bg-marquee {
-      display: flex;
-      white-space: nowrap;
-      animation: scroll-left 22s linear infinite;
-    }
-
-    .bg-marquee span {
-      font-size: 14vw;
-      font-weight: 800;
-      padding-right: 5vw;
-    }
-
-    @keyframes scroll-left {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
     }
 
     .about-hero-grid {
@@ -244,15 +39,6 @@
       align-items: center;
       position: relative;
       z-index: 2;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 1.4rem;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
     }
 
     .about-copy h1 {
@@ -274,47 +60,8 @@
     }
 
     .about-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
       margin-top: 2rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 170px;
-      max-width: 100%;
-      padding: 0.95rem 1.4rem;
-      border: 1px solid var(--accent-cyan);
-      border-radius: 999px;
-      font-size: 0.9rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-align: center;
-      white-space: normal;
-      transition: 0.3s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent-cyan);
-      color: var(--bg-color);
-      font-weight: 700;
-    }
-
-    .btn-primary:hover {
-      background: var(--text-main);
-      border-color: var(--text-main);
-    }
-
-    .btn-secondary {
-      color: var(--text-main);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-color);
+      justify-content: flex-start;
     }
 
     .profile-column {
@@ -432,6 +179,10 @@
       text-align: right;
     }
 
+    .identity-row.status-row {
+      align-items: center;
+    }
+
     .content-section {
       padding: 6rem 4rem;
     }
@@ -516,6 +267,13 @@
       background: rgba(37, 204, 204, 0.06);
       font-size: 0.95rem;
       letter-spacing: 0.8px;
+      transition: 0.25s ease;
+    }
+
+    .skills-wrap span:hover {
+      background: var(--accent-cyan);
+      color: var(--bg-color);
+      transform: translateY(-3px);
     }
 
     .personal-note {
@@ -563,84 +321,6 @@
       max-width: 620px;
     }
 
-    .cta-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .site-footer {
-      padding: 3rem 4rem;
-      border-top: 1px solid var(--line-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-icons {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-icons a {
-      color: var(--soft-white);
-      transition: 0.3s ease;
-      display: inline-flex;
-    }
-
-    .footer-icons a:hover {
-      color: var(--accent-cyan);
-      transform: translateY(-3px);
-    }
-
-    .social-icon {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .footer-text {
-      color: var(--soft-white);
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-
-    .back-to-top {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: none;
-      background: var(--accent-cyan);
-      color: #000;
-      font-size: 1.5rem;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transform: scale(0);
-      transition: 0.3s ease;
-      z-index: 1000;
-    }
-
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-      transform: scale(1);
-    }
-
-    .back-to-top:hover {
-      background: var(--text-main);
-    }
-
     @media (max-width: 1000px) {
       .about-hero-grid,
       .approach-grid,
@@ -655,21 +335,10 @@
     }
 
     @media (max-width: 900px) {
-      .site-header,
       .page-hero,
-      .content-section,
-      .site-footer {
+      .content-section {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-      }
-
-      .site-header {
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;
-      }
-
-      .logo-image {
-        width: 82px;
       }
 
       .page-hero {
@@ -719,19 +388,6 @@
       .personal-note {
         padding: 2rem;
       }
-
-      .site-footer {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .nav-overlay {
-        padding: 0 2rem;
-      }
-
-      .nav-links a {
-        font-size: clamp(3rem, 13vw, 5rem);
-      }
     }
 
     @media (max-width: 520px) {
@@ -743,17 +399,8 @@
         font-size: clamp(2.2rem, 11vw, 3.4rem);
       }
 
-      .about-actions,
-      .cta-actions {
+      .about-actions {
         width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-        min-width: 0;
-        padding: 0.95rem 1rem;
       }
 
       .identity-card h2 {
@@ -767,10 +414,8 @@
     }
 
     @media (max-width: 380px) {
-      .site-header,
       .page-hero,
-      .content-section,
-      .site-footer {
+      .content-section {
         padding-left: 1rem;
         padding-right: 1rem;
       }
@@ -787,24 +432,14 @@
         font-size: clamp(2.1rem, 10vw, 3rem);
       }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .bg-marquee,
-      .loader-ring {
-        animation: none;
-      }
-    }
   </style>
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
   <div class="loader">
-    <div>
+    <div class="loader-inner">
       <div class="loader-ring"></div>
       <div class="loader-text">Loading Profile</div>
     </div>
@@ -815,7 +450,7 @@
       <img src="images/logo.png" alt="Aahil Khoja logo">
     </a>
 
-    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" data-cursor="Menu">
       <span class="line line-1"></span>
       <span class="line line-2"></span>
       <span class="line line-3"></span>
@@ -824,14 +459,24 @@
 
   <nav class="nav-overlay">
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><span class="nav-index">01</span><a href="index.html">Home</a></li>
+      <li><span class="nav-index">02</span><a href="projects.html">Projects</a></li>
+      <li><span class="nav-index">03</span><a href="about.html" aria-current="page">About</a></li>
+      <li><span class="nav-index">04</span><a href="contact.html">Contact</a></li>
     </ul>
+
+    <div class="nav-footer">
+      <a href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+
+      <div class="nav-socials">
+        <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <section class="page-hero">
       <div class="bg-marquee-container">
@@ -844,6 +489,7 @@
       <div class="about-hero-grid">
 
         <div class="about-copy">
+          <span class="status-pill" style="margin-bottom: 1.2rem;"><span class="status-dot"></span>Available for new projects</span>
           <span class="eyebrow">About Me</span>
 
           <h1>
@@ -903,6 +549,11 @@
                 <strong>Tools</strong>
                 <span>Figma + Adobe</span>
               </div>
+
+              <div class="identity-row status-row">
+                <strong>Status</strong>
+                <span><span class="status-dot" style="display:inline-block;position:relative;top:-1px;margin-right:0.5rem;"></span>Open to work</span>
+              </div>
             </div>
           </aside>
 
@@ -913,7 +564,7 @@
 
     <section class="content-section">
       <div class="section-inner">
-        <div class="section-title">
+        <div class="section-title reveal">
           <h2>Design Approach</h2>
           <p>
             My work is built around making information easier to understand,
@@ -922,7 +573,7 @@
         </div>
 
         <div class="approach-grid">
-          <article class="approach-card">
+          <article class="approach-card reveal">
             <div class="approach-number">01</div>
             <h3>Clarity</h3>
             <p>
@@ -931,7 +582,7 @@
             </p>
           </article>
 
-          <article class="approach-card">
+          <article class="approach-card reveal">
             <div class="approach-number">02</div>
             <h3>Structure</h3>
             <p>
@@ -940,7 +591,7 @@
             </p>
           </article>
 
-          <article class="approach-card">
+          <article class="approach-card reveal">
             <div class="approach-number">03</div>
             <h3>Storytelling</h3>
             <p>
@@ -954,7 +605,7 @@
 
     <section class="content-section">
       <div class="section-inner">
-        <div class="section-title">
+        <div class="section-title reveal">
           <h2>Skills & Tools</h2>
           <p>
             A mix of digital, print, interface, and production skills used across UI/UX,
@@ -962,7 +613,7 @@
           </p>
         </div>
 
-        <div class="skills-wrap">
+        <div class="skills-wrap reveal">
           <span>Figma</span>
           <span>Adobe Photoshop</span>
           <span>Adobe Illustrator</span>
@@ -985,7 +636,7 @@
 
     <section class="content-section">
       <div class="section-inner">
-        <div class="personal-note">
+        <div class="personal-note reveal">
           <h2>Beyond the screen.</h2>
 
           <p>
@@ -1000,7 +651,7 @@
 
     <section class="content-section">
       <div class="section-inner">
-        <div class="cta-box">
+        <div class="cta-box reveal">
           <h2>Let’s create something <span class="text-accent">intentional.</span></h2>
 
           <p>
@@ -1018,7 +669,7 @@
   </main>
 
   <footer class="site-footer">
-    <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
+    <p class="footer-text">© <span class="footer-year">2026</span> Aahil Khoja. Designed and Coded.</p>
 
     <div class="footer-icons">
 
@@ -1031,11 +682,11 @@
       </a>
 
       <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">
-        <svg class="social-icon" viewBox="0 0 24 24">
-          <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
-          <path d="M8 13h5a3 3 0 0 1 0 6H8v-6z"></path>
-          <line x1="15" y1="9" x2="20" y2="9"></line>
-          <path d="M15 14h5v1a4 4 0 0 1-8 0v-1h3z"></path>
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
+          <path d="M3 12l4.5 0"></path>
+          <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
+          <path d="M16 6l3 0"></path>
         </svg>
       </a>
 
@@ -1057,55 +708,9 @@
     </div>
   </footer>
 
-  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top" data-cursor="Scroll to Top">↑</button>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const loader = document.querySelector('.loader');
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navOverlay = document.querySelector('.nav-overlay');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const backToTopBtn = document.getElementById('backToTop');
-
-      setTimeout(() => {
-        loader.classList.add('hide');
-      }, 750);
-
-      const toggleMenu = () => {
-        menuToggle.classList.toggle('active');
-        navOverlay.classList.toggle('active');
-
-        const isExpanded = menuToggle.classList.contains('active');
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-        document.body.style.overflow = isExpanded ? 'hidden' : '';
-      };
-
-      menuToggle.addEventListener('click', toggleMenu);
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (menuToggle.classList.contains('active')) {
-            toggleMenu();
-          }
-        });
-      });
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-          backToTopBtn.classList.add('show');
-        } else {
-          backToTopBtn.classList.remove('show');
-        }
-      });
-
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>

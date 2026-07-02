@@ -1,200 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Aahil Khoja | Portfolio</title>
+  <title>Aahil Khoja | UI/UX &amp; Web Designer</title>
+  <meta name="description" content="Aahil Khoja is a Toronto-based multi-disciplinary designer specializing in UI/UX, web, editorial, and packaging design. Available for freelance and full-time opportunities.">
+
+  <meta property="og:title" content="Aahil Khoja | UI/UX & Web Designer">
+  <meta property="og:description" content="Multi-disciplinary designer merging UI/UX, editorial, and visual storytelling. View projects and get in touch.">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
 
   <style>
-    @font-face {
-      font-family: 'HeronsansCond';
-      src: local('HeronsansCond');
-      font-display: swap;
-    }
-
-    :root {
-      --bg-color: #000000;
-      --text-main: #ffffff;
-      --accent-cyan: #25cccc;
-      --soft-white: rgba(255, 255, 255, 0.72);
-      --muted-white: rgba(255, 255, 255, 0.68);
-      --line-color: rgba(255, 255, 255, 0.1);
-      --font-main: 'HeronsansCond', 'Arial Narrow', Arial, sans-serif;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg-color);
-      color: var(--text-main);
-      font-family: var(--font-main);
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .text-accent {
-      color: var(--accent-cyan);
-    }
-
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-inner {
-      text-align: center;
-    }
-
-    .loader-ring {
-      width: 52px;
-      height: 52px;
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      border-top-color: var(--accent-cyan);
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      animation: loader-spin 0.8s linear infinite;
-    }
-
-    .loader-text {
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--soft-white);
-    }
-
-    @keyframes loader-spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.7rem 4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      backdrop-filter: blur(10px);
-    }
-
-    .logo-image {
-      display: inline-flex;
-      align-items: center;
-      width: 92px;
-      max-width: 40vw;
-    }
-
-    .logo-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .menu-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 10px;
-      z-index: 1001;
-    }
-
-    .line {
-      display: block;
-      height: 2px;
-      background: var(--text-main);
-      transition: 0.4s ease;
-    }
-
-    .line-1,
-    .line-3 {
-      width: 32px;
-    }
-
-    .line-2 {
-      width: 20px;
-      align-self: flex-end;
-    }
-
-    .menu-toggle.active .line-1 {
-      transform: translateY(8px) rotate(45deg);
-      background: var(--accent-cyan);
-    }
-
-    .menu-toggle.active .line-2 {
-      opacity: 0;
-    }
-
-    .menu-toggle.active .line-3 {
-      transform: translateY(-8px) rotate(-45deg);
-      background: var(--accent-cyan);
-    }
-
-    .nav-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-color);
-      display: flex;
-      align-items: center;
-      padding: 0 4rem;
-      clip-path: circle(0% at calc(100% - 6rem) 3rem);
-      transition: clip-path 0.7s cubic-bezier(0.76, 0, 0.24, 1);
-      z-index: 999;
-    }
-
-    .nav-overlay.active {
-      clip-path: circle(150% at calc(100% - 6rem) 3rem);
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-    }
-
-    .nav-links a {
-      font-size: clamp(3.5rem, 8vw, 7rem);
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-cyan);
-      padding-left: 2rem;
-    }
-
     .hero {
       min-height: 88vh;
       position: relative;
@@ -206,37 +27,8 @@
       overflow: hidden;
     }
 
-    .bg-marquee-container {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      transform: translateY(-50%);
+    .hero .bg-marquee-container {
       opacity: 0.095;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .bg-marquee {
-      display: flex;
-      white-space: nowrap;
-      animation: scroll-left 22s linear infinite;
-    }
-
-    .bg-marquee span {
-      font-size: 14vw;
-      font-weight: 800;
-      padding-right: 5vw;
-    }
-
-    @keyframes scroll-left {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
     }
 
     .hero-ring {
@@ -339,13 +131,8 @@
       width: 100%;
     }
 
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 1.4rem;
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      color: var(--accent-cyan);
-      text-transform: uppercase;
+    .hero-content .status-pill {
+      margin: 0 auto 1.2rem;
     }
 
     .hero h1 {
@@ -374,51 +161,6 @@
       color: var(--soft-white);
       font-size: clamp(1.05rem, 2vw, 1.35rem);
       line-height: 1.6;
-    }
-
-    .hero-actions,
-    .cta-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 170px;
-      max-width: 100%;
-      padding: 0.95rem 1.4rem;
-      border: 1px solid var(--accent-cyan);
-      border-radius: 999px;
-      font-size: 0.9rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-align: center;
-      white-space: normal;
-      transition: 0.3s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent-cyan);
-      color: var(--bg-color);
-      font-weight: 700;
-    }
-
-    .btn-primary:hover {
-      background: var(--text-main);
-      border-color: var(--text-main);
-    }
-
-    .btn-secondary {
-      color: var(--text-main);
-    }
-
-    .btn-secondary:hover {
-      background: var(--accent-cyan);
-      color: var(--bg-color);
     }
 
     .projects {
@@ -488,7 +230,8 @@
       font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      transition: 0.35s ease;
+      transition: transform 0.35s ease, filter 0.35s ease;
+      transform-style: preserve-3d;
     }
 
     .project-visual img {
@@ -500,7 +243,6 @@
     }
 
     .project-card:hover .project-visual {
-      transform: scale(0.985);
       filter: brightness(1.08);
     }
 
@@ -547,93 +289,11 @@
       line-height: 1.6;
     }
 
-    .site-footer {
-      padding: 3rem 4rem;
-      border-top: 1px solid var(--line-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-icons {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    .footer-icons a {
-      color: var(--soft-white);
-      transition: 0.3s ease;
-      display: inline-flex;
-    }
-
-    .footer-icons a:hover {
-      color: var(--accent-cyan);
-      transform: translateY(-3px);
-    }
-
-    .social-icon {
-      width: 28px;
-      height: 28px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .footer-text {
-      color: var(--muted-white);
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-
-    .back-to-top {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: none;
-      background: var(--accent-cyan);
-      color: #000;
-      font-size: 1.5rem;
-      cursor: pointer;
-      opacity: 0;
-      visibility: hidden;
-      transform: scale(0);
-      transition: 0.3s ease;
-      z-index: 1000;
-    }
-
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-      transform: scale(1);
-    }
-
-    .back-to-top:hover {
-      background: var(--text-main);
-    }
-
     @media (max-width: 900px) {
-      .site-header,
       .projects,
-      .contact-preview,
-      .site-footer {
+      .contact-preview {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
-      }
-
-      .site-header {
-        padding-top: 1.2rem;
-        padding-bottom: 1.2rem;
-      }
-
-      .logo-image {
-        width: 82px;
       }
 
       .hero {
@@ -659,19 +319,6 @@
 
       .project-info h3 {
         font-size: 1.2rem;
-      }
-
-      .site-footer {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .nav-overlay {
-        padding: 0 2rem;
-      }
-
-      .nav-links a {
-        font-size: clamp(3rem, 13vw, 5rem);
       }
 
       .hero h1 {
@@ -706,30 +353,9 @@
       }
     }
 
-    @media (max-width: 520px) {
-      .hero-actions,
-      .cta-actions {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-        min-width: 0;
-        padding: 0.95rem 1rem;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .bg-marquee,
       .hero-ring::before,
-      .hero-ring::after,
-      .loader-ring {
+      .hero-ring::after {
         animation: none;
       }
     }
@@ -737,6 +363,7 @@
 </head>
 
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
 
   <div class="loader">
     <div class="loader-inner">
@@ -750,7 +377,7 @@
       <img src="images/logo.png" alt="Aahil Khoja logo">
     </a>
 
-    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false">
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" data-cursor="Menu">
       <span class="line line-1"></span>
       <span class="line line-2"></span>
       <span class="line line-3"></span>
@@ -759,14 +386,24 @@
 
   <nav class="nav-overlay">
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><span class="nav-index">01</span><a href="index.html" aria-current="page">Home</a></li>
+      <li><span class="nav-index">02</span><a href="projects.html">Projects</a></li>
+      <li><span class="nav-index">03</span><a href="about.html">About</a></li>
+      <li><span class="nav-index">04</span><a href="contact.html">Contact</a></li>
     </ul>
+
+    <div class="nav-footer">
+      <a href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+
+      <div class="nav-socials">
+        <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
   </nav>
 
-  <main>
+  <main id="main-content">
 
     <section class="hero" id="home">
       <div class="bg-marquee-container">
@@ -779,6 +416,8 @@
       <div class="hero-ring" aria-hidden="true"></div>
 
       <div class="hero-content">
+        <span class="status-pill"><span class="status-dot"></span>Available for new projects</span>
+
         <span class="eyebrow">UI/UX • Web • Editorial • Packaging</span>
 
         <h1>
@@ -794,12 +433,13 @@
 
         <div class="hero-actions">
           <a href="projects.html" class="btn btn-primary">View Projects</a>
+          <a href="contact.html" class="btn btn-secondary">Let’s Talk</a>
         </div>
       </div>
     </section>
 
     <section class="projects" id="featured">
-      <div class="section-header">
+      <div class="section-header reveal">
         <div>
           <h2>Featured <span>Projects</span></h2>
           <p>
@@ -811,7 +451,7 @@
 
       <div class="project-grid">
 
-        <a href="shizuka-matcha.html" class="project-card" aria-label="View Shizuka Matcha project">
+        <a href="shizuka-matcha.html" class="project-card reveal" data-cursor="View Case Study" aria-label="View Shizuka Matcha project">
           <div class="project-visual">
             <img src="images/shizuka-matcha-preview.png" alt="Shizuka Matcha packaging design preview">
           </div>
@@ -822,7 +462,7 @@
           </div>
         </a>
 
-        <a href="salustiana-campaign.html" class="project-card" aria-label="View Salustiana Meorganica Campaign Development project">
+        <a href="salustiana-campaign.html" class="project-card reveal" data-cursor="View Case Study" aria-label="View Salustiana Meorganica Campaign Development project">
           <div class="project-visual">
             <img src="images/salustiana-campaign-preview.jpg" alt="Salustiana Meorganica campaign development booth mockup preview">
           </div>
@@ -833,9 +473,9 @@
           </div>
         </a>
 
-        <a href="serena-homes.html" class="project-card" aria-label="View Serena Homes project">
+        <a href="serena-homes.html" class="project-card reveal" data-cursor="View Case Study" aria-label="View Serena Homes project">
           <div class="project-visual">
-            <img src="images/serena-homes-preview.jpg" alt="Serena Homes landing page design preview">
+            <span>Serena Homes Preview</span>
           </div>
 
           <div class="project-info">
@@ -844,9 +484,9 @@
           </div>
         </a>
 
-        <a href="salustiana-meorganica.html" class="project-card" aria-label="View Salustiana Meorganica app project">
+        <a href="salustiana-meorganica.html" class="project-card reveal" data-cursor="View Case Study" aria-label="View Salustiana Meorganica app project">
           <div class="project-visual">
-            <img src="images/salustiana-app-preview.jpg" alt="Salustiana Meorganica mobile app design preview">
+            <span>Salustiana App Preview</span>
           </div>
 
           <div class="project-info">
@@ -858,7 +498,7 @@
       </div>
     </section>
 
-    <section class="contact-preview" id="contact-preview">
+    <section class="contact-preview reveal" id="contact-preview">
       <h2>Let’s build something <span>clear.</span></h2>
 
       <p>
@@ -874,7 +514,7 @@
   </main>
 
   <footer class="site-footer">
-    <p class="footer-text">© 2026 Aahil Khoja. Designed and Coded.</p>
+    <p class="footer-text">© <span class="footer-year">2026</span> Aahil Khoja. Designed and Coded.</p>
 
     <div class="footer-icons">
 
@@ -887,11 +527,11 @@
       </a>
 
       <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">
-        <svg class="social-icon" viewBox="0 0 24 24">
-          <path d="M8 7h4a3 3 0 0 1 0 6H8V7z"></path>
-          <path d="M8 13h5a3 3 0 0 1 0 6H8v-6z"></path>
-          <line x1="15" y1="9" x2="20" y2="9"></line>
-          <path d="M15 14h5v1a4 4 0 0 1-8 0v-1h3z"></path>
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
+          <path d="M3 12l4.5 0"></path>
+          <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
+          <path d="M16 6l3 0"></path>
         </svg>
       </a>
 
@@ -913,55 +553,9 @@
     </div>
   </footer>
 
-  <button id="backToTop" class="back-to-top" aria-label="Back to Top">↑</button>
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top" data-cursor="Scroll to Top">↑</button>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const loader = document.querySelector('.loader');
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navOverlay = document.querySelector('.nav-overlay');
-      const navLinks = document.querySelectorAll('.nav-links a');
-      const backToTopBtn = document.getElementById('backToTop');
-
-      setTimeout(() => {
-        loader.classList.add('hide');
-      }, 750);
-
-      const toggleMenu = () => {
-        menuToggle.classList.toggle('active');
-        navOverlay.classList.toggle('active');
-
-        const isExpanded = menuToggle.classList.contains('active');
-        menuToggle.setAttribute('aria-expanded', isExpanded);
-        document.body.style.overflow = isExpanded ? 'hidden' : '';
-      };
-
-      menuToggle.addEventListener('click', toggleMenu);
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          if (menuToggle.classList.contains('active')) {
-            toggleMenu();
-          }
-        });
-      });
-
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-          backToTopBtn.classList.add('show');
-        } else {
-          backToTopBtn.classList.remove('show');
-        }
-      });
-
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Page Not Found | Aahil Khoja</title>
+  <meta name="description" content="This page doesn't exist. Head back to Aahil Khoja's portfolio home.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
+
+  <style>
+    .not-found {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .not-found-inner {
+      max-width: 640px;
+    }
+
+    .not-found-code {
+      font-size: clamp(5rem, 16vw, 9rem);
+      line-height: 0.9;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      margin-bottom: 1rem;
+    }
+
+    .not-found h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .not-found p {
+      color: var(--soft-white);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .not-found-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 520px) {
+      .not-found-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <div class="loader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Loading Interface</div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo-image" aria-label="Aahil Khoja Home">
+      <img src="images/logo.png" alt="Aahil Khoja logo">
+    </a>
+
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" data-cursor="Menu">
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay">
+    <ul class="nav-links">
+      <li><span class="nav-index">01</span><a href="index.html">Home</a></li>
+      <li><span class="nav-index">02</span><a href="projects.html">Projects</a></li>
+      <li><span class="nav-index">03</span><a href="about.html">About</a></li>
+      <li><span class="nav-index">04</span><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-footer">
+      <a href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+
+      <div class="nav-socials">
+        <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="not-found">
+      <div class="not-found-inner">
+        <div class="not-found-code">404</div>
+
+        <h1>This page wandered off the grid.</h1>
+
+        <p>
+          The page you're looking for doesn't exist, or the link's outdated.
+          Let's get you back to the work.
+        </p>
+
+        <div class="not-found-actions">
+          <a href="index.html" class="btn btn-primary" data-cursor="Go Home">Back to Home</a>
+          <a href="projects.html" class="btn btn-secondary" data-cursor="View Work">View Projects</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">© <span class="footer-year">2026</span> Aahil Khoja. Designed and Coded.</p>
+
+    <div class="footer-icons">
+
+      <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+
+      <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
+          <path d="M3 12l4.5 0"></path>
+          <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
+          <path d="M16 6l3 0"></path>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+
+      <a href="mailto:aahilkhoja123@gmail.com" aria-label="Email">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>

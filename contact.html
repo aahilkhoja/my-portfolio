@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact | Aahil Khoja</title>
+  <meta name="description" content="Get in touch with Aahil Khoja for UI/UX, web design, editorial, packaging, or creative collaboration opportunities.">
+
+  <meta property="og:title" content="Contact | Aahil Khoja">
+  <meta property="og:description" content="Available for freelance and full-time UI/UX, web, editorial, and packaging design work.">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="css/base.css">
+
+  <style>
+    .page-hero {
+      min-height: 46vh;
+      padding: 10rem 4rem 3rem;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-hero-inner .status-pill {
+      margin-bottom: 1.2rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(3.4rem, 9vw, 7.5rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero p {
+      max-width: 640px;
+      color: var(--soft-white);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.6;
+    }
+
+    .contact-section {
+      padding: 2rem 4rem 8rem;
+    }
+
+    .contact-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-form-card {
+      background: #050505;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 30px;
+      padding: 2.75rem;
+    }
+
+    .contact-form-card h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-form-card > p {
+      color: var(--soft-white);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 460px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .form-field label {
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted-white);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      font-family: inherit;
+      background: #0a0a0a;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 14px;
+      padding: 0.9rem 1.1rem;
+      color: var(--text-main);
+      font-size: 1rem;
+      transition: 0.25s ease;
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 140px;
+      line-height: 1.5;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(37, 204, 204, 0.15);
+    }
+
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(255, 255, 255, 0.32);
+    }
+
+    .contact-form-card .btn {
+      width: 100%;
+      border: none;
+    }
+
+    .contact-info-col {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .info-card {
+      background: #050505;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      transition: 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(37, 204, 204, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .info-label {
+      font-size: 0.78rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .info-value {
+      font-size: 1.2rem;
+      color: var(--text-main);
+      word-break: break-word;
+    }
+
+    .info-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .info-links a {
+      color: var(--soft-white);
+      font-size: 1rem;
+      border-bottom: 1px solid transparent;
+      transition: 0.25s ease;
+    }
+
+    .info-links a:hover {
+      color: var(--accent-cyan);
+      border-bottom-color: var(--accent-cyan);
+    }
+
+    .response-note {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: var(--soft-white);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1000px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .page-hero,
+      .contact-section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .page-hero {
+        padding-top: 9rem;
+        min-height: 40vh;
+      }
+
+      .contact-form-card {
+        padding: 1.75rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page-hero h1 {
+        font-size: clamp(3rem, 16vw, 4.5rem);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .page-hero,
+      .contact-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <div class="loader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Loading Contact</div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a href="index.html" class="logo-image" aria-label="Aahil Khoja Home">
+      <img src="images/logo.png" alt="Aahil Khoja logo">
+    </a>
+
+    <button class="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" data-cursor="Menu">
+      <span class="line line-1"></span>
+      <span class="line line-2"></span>
+      <span class="line line-3"></span>
+    </button>
+  </header>
+
+  <nav class="nav-overlay">
+    <ul class="nav-links">
+      <li><span class="nav-index">01</span><a href="index.html">Home</a></li>
+      <li><span class="nav-index">02</span><a href="projects.html">Projects</a></li>
+      <li><span class="nav-index">03</span><a href="about.html">About</a></li>
+      <li><span class="nav-index">04</span><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+
+    <div class="nav-footer">
+      <a href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+
+      <div class="nav-socials">
+        <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <span class="status-pill"><span class="status-dot"></span>Available for new projects</span>
+        <span class="eyebrow">Get In Touch</span>
+
+        <h1>Let’s start a project.</h1>
+
+        <p>
+          Have a UI/UX, web, editorial, or packaging project in mind? Fill out the form
+          or reach out directly — I usually reply within 24 hours.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-grid">
+
+        <div class="contact-form-card reveal">
+          <h2>Send a message</h2>
+          <p>Tell me a bit about your project and I’ll get back to you with next steps.</p>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+              </div>
+
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com" required>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="projectType">Project Type</label>
+              <select id="projectType" name="projectType">
+                <option value="UI/UX Design">UI/UX Design</option>
+                <option value="Web Design">Web Design</option>
+                <option value="Editorial Design">Editorial Design</option>
+                <option value="Packaging Design">Packaging Design</option>
+                <option value="Full-time Role">Full-time Role</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me about your project, timeline, and budget..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact-info-col">
+
+          <div class="info-card reveal">
+            <span class="info-label">Email</span>
+            <a class="info-value" href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="info-label">Location</span>
+            <div class="info-value">Toronto, Canada</div>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="info-label">Elsewhere</span>
+            <div class="info-links">
+              <a href="https://linkedin.com/in/aahil-khoja/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://www.behance.net/khoja-aahil" target="_blank" rel="noopener noreferrer">Behance</a>
+              <a href="https://www.instagram.com/khoja_jr/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </div>
+
+          <div class="info-card reveal">
+            <span class="info-label">Response Time</span>
+            <div class="response-note"><span class="status-dot"></span>Usually within 24 hours</div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">© <span class="footer-year">2026</span> Aahil Khoja. Designed and Coded.</p>
+
+    <div class="footer-icons">
+
+      <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+      </a>
+
+      <a href="https://www.behance.net/khoja-aahil" aria-label="Behance" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5"></path>
+          <path d="M3 12l4.5 0"></path>
+          <path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1"></path>
+          <path d="M16 6l3 0"></path>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/khoja_jr/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+
+      <a href="mailto:aahilkhoja123@gmail.com" aria-label="Email">
+        <svg class="social-icon" viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </a>
+
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top" data-cursor="Scroll to Top">↑</button>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
