@@ -1,1 +1,5 @@
 .claude/
+
+# Raw source project folders (drag-and-drop originals) - kept locally only.
+# Optimized web copies live in images/work/ and are the ones that get committed.
+/Project [0-9]*/

@@ -207,6 +207,17 @@
   aspect-ratio: 8 / 5;
 }
 
+/* Use when there are exactly 2 closing mockups instead of 3, so the grid
+   stays an even 2-up rather than forcing an asymmetric layout. */
+.mockup-showcase.two-up {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mockup-showcase.two-up > *:first-child {
+  grid-column: span 1;
+  aspect-ratio: 3 / 4;
+}
+
 /* Case gallery — a continuous full-bleed sequence of screens that scale
    and fade in one at a time as they scroll into view, rather than being
    split into separate mood board / sketch / mockup subsections. */
