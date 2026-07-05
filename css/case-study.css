@@ -190,6 +190,29 @@
   aspect-ratio: 16 / 9;
 }
 
+/* Use when the images being shown side by side have very different native
+   aspect ratios (a landscape shot next to a portrait shot, for example) so
+   forcing a shared aspect-ratio would crop one of them badly. Both tiles
+   share a fixed height instead and each image keeps its own proportions. */
+.final-design-grid.mixed-ratio {
+  align-items: center;
+}
+
+.final-design-grid.mixed-ratio > * {
+  aspect-ratio: auto;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+}
+
+.final-design-grid.mixed-ratio .media-tile img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Mockup files */
 
 .mockup-showcase {
@@ -416,6 +439,10 @@
   .case-meta-row {
     grid-template-columns: 1fr 1fr;
   }
+
+  .final-design-grid.mixed-ratio > * {
+    height: 360px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -423,6 +450,10 @@
   .sketch-gallery,
   .mockup-showcase {
     grid-template-columns: 1fr;
+  }
+
+  .final-design-grid.mixed-ratio > * {
+    height: 300px;
   }
 
   .moodboard-grid > *:nth-child(4n+1),
