@@ -47,7 +47,7 @@
   font-size: clamp(2.6rem, 6vw, 5.2rem);
   line-height: 0.98;
   text-transform: uppercase;
-  letter-spacing: -0.2px;
+  letter-spacing: 0.5px;
   max-width: 900px;
   margin-bottom: 1.4rem;
 }
