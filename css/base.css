@@ -680,6 +680,12 @@ a {
   background: var(--text-main);
 }
 
+.back-to-top.show.footer-visible {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+}
+
 .eyebrow {
   display: inline-block;
   margin-bottom: 1.4rem;

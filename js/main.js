@@ -65,6 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
     backToTopBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // Hide the button once the footer scrolls into view so it doesn't sit
+    // on top of the footer's social icons in the bottom-right corner.
+    const siteFooter = document.querySelector('.site-footer');
+
+    if (siteFooter && 'IntersectionObserver' in window) {
+      const footerObserver = new IntersectionObserver(entries => {
+        backToTopBtn.classList.toggle('footer-visible', entries[0].isIntersecting);
+      }, { threshold: 0 });
+
+      footerObserver.observe(siteFooter);
+    }
   }
 
   // Scroll reveal
