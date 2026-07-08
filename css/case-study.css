@@ -241,6 +241,20 @@
   aspect-ratio: 3 / 4;
 }
 
+/* Dense deck grid — for projects with many source slides/images where a
+   full-bleed section per image would make the page scroll forever. Packs
+   everything into a tight, uniform grid instead so it can be seen at a
+   glance. */
+.deck-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+
+.deck-grid > * {
+  aspect-ratio: 16 / 9;
+}
+
 /* Case gallery — a continuous full-bleed sequence of screens that scale
    and fade in one at a time as they scroll into view, rather than being
    split into separate mood board / sketch / mockup subsections. */
@@ -422,6 +436,10 @@
   .final-design-grid > * {
     aspect-ratio: 16 / 10;
   }
+
+  .deck-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 900px) {
@@ -450,6 +468,10 @@
   .sketch-gallery,
   .mockup-showcase {
     grid-template-columns: 1fr;
+  }
+
+  .deck-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .final-design-grid.mixed-ratio > * {
