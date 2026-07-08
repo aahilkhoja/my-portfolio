@@ -168,24 +168,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Contact form (mailto handoff, no backend)
+  // Contact form (submits straight to Web3Forms, no mail app popup)
   const contactForm = document.getElementById('contactForm');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', e => {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const statusEl = document.getElementById('formStatus');
+
+    contactForm.addEventListener('submit', async e => {
       e.preventDefault();
 
-      const name = contactForm.querySelector('#name').value.trim();
-      const email = contactForm.querySelector('#email').value.trim();
-      const projectType = contactForm.querySelector('#projectType').value;
-      const message = contactForm.querySelector('#message').value.trim();
+      if (statusEl) {
+        statusEl.textContent = '';
+        statusEl.classList.remove('is-success', 'is-error');
+      }
 
-      const subject = encodeURIComponent(`Project Inquiry from ${name}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\n${message}`
-      );
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
 
-      window.location.href = `mailto:aahilkhoja123@gmail.com?subject=${subject}&body=${body}`;
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+        });
+
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+
+        contactForm.reset();
+
+        if (statusEl) {
+          statusEl.textContent = 'Thanks, your message is on its way. I will get back to you soon.';
+          statusEl.classList.add('is-success');
+        }
+      } catch (err) {
+        if (statusEl) {
+          statusEl.textContent = 'Something went wrong sending that. Please email me directly at contact@aahilkhoja.com.';
+          statusEl.classList.add('is-error');
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      }
     });
   }
 });

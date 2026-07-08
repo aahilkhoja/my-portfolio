@@ -142,6 +142,26 @@
       border: none;
     }
 
+    .contact-form-card .btn:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .form-status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      min-height: 1.3em;
+    }
+
+    .form-status.is-success {
+      color: var(--accent-cyan);
+    }
+
+    .form-status.is-error {
+      color: #ff6b6b;
+    }
+
     .contact-info-col {
       display: grid;
       gap: 1.4rem;
@@ -277,7 +297,7 @@
     </ul>
 
     <div class="nav-footer">
-      <a href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+      <a href="mailto:contact@aahilkhoja.com">contact@aahilkhoja.com</a>
 
       <div class="nav-socials">
         <a href="https://linkedin.com/in/aahil-khoja/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -310,7 +330,16 @@
           <h2>Send a message</h2>
           <p>Tell me a bit about your project and I’ll get back to you with next steps.</p>
 
-          <form id="contactForm" novalidate>
+          <form id="contactForm">
+            <!--
+              Web3Forms access key. Get yours free at web3forms.com (enter
+              your email, no account needed), then paste it below in place
+              of REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY.
+            -->
+            <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New project inquiry from aahilkhoja.com">
+            <input type="checkbox" name="botcheck" class="hidden-field" style="display: none;">
+
             <div class="form-row">
               <div class="form-field">
                 <label for="name">Name</label>
@@ -341,6 +370,8 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Send Message</button>
+
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
           </form>
         </div>
 
@@ -348,7 +379,7 @@
 
           <div class="info-card reveal">
             <span class="info-label">Email</span>
-            <a class="info-value" href="mailto:aahilkhoja123@gmail.com">aahilkhoja123@gmail.com</a>
+            <a class="info-value" href="mailto:contact@aahilkhoja.com">contact@aahilkhoja.com</a>
           </div>
 
           <div class="info-card reveal">
@@ -407,7 +438,7 @@
         </svg>
       </a>
 
-      <a href="mailto:aahilkhoja123@gmail.com" aria-label="Email">
+      <a href="mailto:contact@aahilkhoja.com" aria-label="Email">
         <svg class="social-icon" viewBox="0 0 24 24">
           <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
           <polyline points="22,6 12,13 2,6"></polyline>
