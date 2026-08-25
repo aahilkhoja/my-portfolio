@@ -369,6 +369,26 @@
   border-radius: 0;
 }
 
+/* PDF embed - same treatment as the Figma embed, but a fixed tall height
+   instead of a width-driven aspect ratio, since the point is scrolling
+   through a multi-page document in place rather than showing one frame. */
+
+.pdf-embed-wrap {
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0a0a0a;
+  height: 85vh;
+  max-height: 900px;
+}
+
+.pdf-embed-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 .figma-note {
   display: flex;
   align-items: center;
@@ -464,6 +484,10 @@
 
   .final-design-grid.mixed-ratio > * {
     height: 360px;
+  }
+
+  .pdf-embed-wrap {
+    height: 75vh;
   }
 }
 
